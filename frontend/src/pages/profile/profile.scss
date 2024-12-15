@@ -1,0 +1,44 @@
+.profile {
+  padding: 80px 0;
+  .profile_table {
+    @media(max-width:575px){
+      overflow-x: scroll;
+    }
+    table {
+      width: 400px;
+      thead {
+        border: 1px solid rgb(61, 57, 57);
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        margin: 1px;
+        th {
+          font-size: 20px;
+        }
+      }
+      tbody {
+        display: block;
+        tr {
+          justify-content: flex-start;
+          border-left: 1px solid rgb(61, 57, 57);
+          border-right: 1px solid rgb(61, 57, 57);
+          display: block;
+          border: 1px solid rgb(61, 57, 57);
+          margin: 1px;
+          th {
+            width: 150px;
+            border-right: 1px solid rgb(61, 57, 57);
+            padding: 15px 20px;
+            text-align: left;
+            font-size: 20px;
+          }
+          td {
+            width: auto;
+            border-left: 1px solid rgb(61, 57, 57);
+            font-size: 18px;
+          }
+        }
+      }
+    }
+  }
+}

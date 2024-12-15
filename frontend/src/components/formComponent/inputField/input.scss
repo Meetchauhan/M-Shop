@@ -1,0 +1,22 @@
+@use "../../../styles/variables.scss" as *;
+
+.field {
+  width: 100%;
+  margin: 0 0 20px;
+  input {
+    width: -webkit-fill-available;
+    height: 28px;
+    padding: 5px 7px;
+    border: 1px solid black;
+    border-radius: 3px;
+    font-size: 15px;
+
+    &:focus-visible {
+      outline: none;
+    }
+  }
+  p {
+    color: $red;
+    margin-top: 5px;
+  }
+}

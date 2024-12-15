@@ -1,0 +1,19 @@
+.formSubmitStatus {
+  position: absolute;
+  top: 50px;
+  transition: all 0.5s;
+  overflow: hidden;
+  right: -300px;
+  border: 1px solid red;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: rgba(206, 88, 88, 0.692);
+  &.show {
+    right: 300px;
+  }
+  &.hide {
+    right: -300px;
+  }
+  p {
+  }
+}

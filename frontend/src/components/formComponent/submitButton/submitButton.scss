@@ -1,0 +1,19 @@
+.submitBtn {
+  text-align: center;
+  button {
+    padding: 10px 5px;
+    background-color: black;
+    color: white;
+    font-size: 16px;
+    border: 1px solid black;
+    transition: all 0.4s;
+    min-width: 130px;
+    border-radius: 8px;
+    cursor: pointer;
+    &:hover {
+      background-color: white;
+      color: black;
+      border: 1px solid black;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+.cart {
+  margin: 80px 0;
+  .totalAmount {
+    font-size: 22px;
+    border: 1px solid rgba(145, 141, 141, 0.979);
+    padding: 10px;
+    margin: 20px;
+    width: max-content;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    img{
+        width: 15px;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+.form.login.register.admin_product_form{
+  height: 100vh;
+}
+.admin_product_form {
+    position: absolute !important;
+    top: 0;
+    background-color: rgba(65, 62, 62, 0.212);
+    .form_wrapper {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 500px;
+      background-color: white;
+      padding: 40px;
+      @media (max-width: 767px) {
+        width: 100%;
+      }
+    }
+  }
+  

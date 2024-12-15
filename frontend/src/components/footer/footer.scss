@@ -1,0 +1,108 @@
+footer {
+  padding: 20px 0 50px;
+  box-shadow: rgba(0, 0, 0, 0.20) 0px -10px 20px -10px;
+
+  .footer_wrap {
+    
+    .logo {
+        margin: 0 0 20px;
+      img {
+        width: 60px;
+        max-width: 100%;
+        display: block;
+      }
+    }
+    .first {
+      display: flex;
+      gap: 40px;
+      @media (max-width: 1199px) {
+        gap: 30px;
+      }
+      @media (max-width: 991px) {
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+      @media (max-width: 767px) {
+        gap: 0;
+      }
+      .col1 {
+        width: 25%;
+        
+        @media (max-width: 991px) {
+          width: 45%;
+        }
+        @media (max-width: 767px) {
+          width: 100%;
+          margin: 0 0 20px;
+        }
+        .text {
+          font-size: 17px;
+          margin: 0 0 20px;
+        }
+      }
+      .col2 {
+        width: 35%;
+        @media (max-width: 991px) {
+          width: 45%;
+        }
+        @media (max-width: 767px) {
+          width: 100%;
+          margin: 0 0 20px;
+        }
+        .text {
+          font-size: 18px;
+          font-weight: 700;
+          margin: 0 0 10px;
+        }
+        form {
+          display: flex;
+          gap: 5px;
+          button {
+          }
+        }
+      }
+      .col3 {
+        width: 20%;
+        @media (max-width: 991px) {
+          width: 45%;
+        }
+        @media (max-width: 767px) {
+          width: 100%;
+          margin: 0 0 20px;
+        }
+        .socials {
+          .title {
+            font-size: 22px;
+            font-weight: 700;
+            margin: 0 0 10px;
+          }
+          ul {
+            display: flex;
+            gap: 8px;
+          }
+        }
+      }
+      .col4 {
+        width: 20%;
+        @media (max-width: 991px) {
+          width: 45%;
+        }
+        @media (max-width: 767px) {
+          width: 100%;
+          margin: 0 0 20px;
+        }
+        .contact {
+          .title {
+            font-size: 22px;
+            font-weight: 700;
+            margin: 0 0 10px;
+          }
+          .number {
+            font-size: 18px;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+  }
+}

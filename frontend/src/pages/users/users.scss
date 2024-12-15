@@ -1,0 +1,26 @@
+.users {
+  @media(max-width:767px){
+    overflow-x: scroll;
+  }
+  .user_inner {
+    table {
+      tbody {
+        tr {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          &.user_wrapper{
+            td{
+              font-weight: 700;
+            }
+          }
+          td {
+          }
+          &:first-child td {
+            font-weight: 700;
+          }
+        }
+      }
+    }
+  }
+}
