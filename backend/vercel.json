@@ -1,5 +1,5 @@
 {
-  "installCommand": "npm  install --legacy-peer-deps",
+  "installCommand": "npm install --legacy-peer-deps",
   "version": 2,
   "builds": [
     {
@@ -11,14 +11,14 @@
       "use": "@vercel/static"
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/api/(.*)",
-      "dest": "/server.js"
+      "source": "/api/(.*)",
+      "destination": "/server.js"
     },
     {
-      "src": "/(.*)",
-      "dest": "/src/$1"
+      "source": "/(.*)",
+      "destination": "/src/$1"
     }
   ]
 }
