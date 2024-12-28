@@ -4,6 +4,7 @@ import "./profile.scss";
 import { openUserEditModel } from "../../features/productModelSlice";
 import UpdateProfileModel from "../../components/model/UpdateProfileModel";
 import EditUserBtn from "../../components/buttons/editUserBtn/EditUserBtn";
+import Heading from "../../components/heading/Heading";
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -16,6 +17,7 @@ const Profile = () => {
   return (
     <div className="profile">
       <div className="container">
+        <Heading title={"Profile"} />
         <div className="profile_table">
           <table>
             <thead>

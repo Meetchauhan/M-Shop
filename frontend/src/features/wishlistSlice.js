@@ -1,21 +1,19 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 export const addToWishlist = createAsyncThunk("addToWishlist", async (data) => {
-  const response = await fetch(
-    "http://localhost:8000/api/wishlist/addToWishlist",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-      credentials: "include",
-    }
-  );
+  const response = await fetch(`${API_BASE_URL}/wishlist/addToWishlist`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+    credentials: "include",
+  });
   try {
     const result = await response.json();
     console.log("wishlist result", result);
-    
+
     return result;
   } catch (error) {
     console.log("Error in add to wishlist", error);
@@ -25,17 +23,14 @@ export const addToWishlist = createAsyncThunk("addToWishlist", async (data) => {
 export const removeWishlist = createAsyncThunk(
   "removeWishlist",
   async (data) => {
-    const response = await fetch(
-      "http://localhost:8000/api/wishlist/removeWishlist",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-        credentials: "include",
-      }
-    );
+    const response = await fetch(`${API_BASE_URL}/wishlist/removeWishlist`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+      credentials: "include",
+    });
     try {
       const result = await response.json();
       return result;
@@ -46,12 +41,9 @@ export const removeWishlist = createAsyncThunk(
 );
 
 export const getWishlistItem = createAsyncThunk("getWishlist", async () => {
-  const response = await fetch(
-    "http://localhost:8000/api/wishlist/wishlistProducts",
-    {
-        credentials: "include",
-    }
-  );
+  const response = await fetch(`${API_BASE_URL}/wishlist/wishlistProducts`, {
+    credentials: "include",
+  });
   try {
     const result = await response.json();
     return result;

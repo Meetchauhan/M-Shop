@@ -1,7 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 export const getAllUser = createAsyncThunk("allUsers", async () => {
-  const response = await fetch("http://localhost:8000/api/user/getUser");
+  const response = await fetch(`${API_BASE_URL}/user/getUser`);
   try {
     const result = await response.json();
     return result;
@@ -13,16 +14,13 @@ export const getAllUser = createAsyncThunk("allUsers", async () => {
 export const updateUserByAdmin = createAsyncThunk(
   "updateUserByAdmin",
   async ({ id, userData }) => {
-    const response = await fetch(
-      `http://localhost:8000/api/user/updateUser/${id}`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(userData),
-      }
-    );
+    const response = await fetch(`${API_BASE_URL}/user/updateUser/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    });
 
     try {
       const result = await response.json();
@@ -34,15 +32,12 @@ export const updateUserByAdmin = createAsyncThunk(
 );
 
 export const deleteUser = createAsyncThunk("deleteUser", async (id) => {
-  const response = await fetch(
-    `http://localhost:8000/api/user/deleteUser/${id}`,
-    {
-      method: "DELETE",
-      // headers:{
-      //   "Content-Type": "application/json"
-      // }
-    }
-  );
+  const response = await fetch(`${API_BASE_URL}/user/deleteUser/${id}`, {
+    method: "DELETE",
+    // headers:{
+    //   "Content-Type": "application/json"
+    // }
+  });
   try {
     const result = await response.json();
     return result;

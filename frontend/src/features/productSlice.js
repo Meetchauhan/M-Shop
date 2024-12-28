@@ -1,7 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 export const allProducts = createAsyncThunk("products/fetchAll", async () => {
-  const response = await fetch("http://localhost:8000/api/products");
+  const response = await fetch(`${API_BASE_URL}/products`);
   const result = await response.json();
   console.log("get all products result", result);
 
@@ -11,7 +13,7 @@ export const allProducts = createAsyncThunk("products/fetchAll", async () => {
 export const createProducts = createAsyncThunk(
   "products/create",
   async (formData) => {
-    const response = await fetch("http://localhost:8000/api/products", {
+    const response = await fetch(`${API_BASE_URL}/products`, {
       method: "POST",
       headers: {
         // "Content-Type": "application/json",
@@ -29,7 +31,7 @@ export const createProducts = createAsyncThunk(
 );
 export const deleteProduct = createAsyncThunk("product/delete", async (id) => {
   const response = await fetch(
-    `http://localhost:8000/api/products/${id && id}`,
+    `${API_BASE_URL}/products/${id && id}`,
     {
       method: "DELETE",
     }
@@ -44,7 +46,7 @@ export const updateProduct = createAsyncThunk(
   "product/update",
   async ({ id, productData }) => {
     try {
-      const response = await fetch(`http://localhost:8000/api/products/${id}`, {
+      const response = await fetch(`${API_BASE_URL}/products/${id}`, {
         method: "PUT",
         body: productData,
       });

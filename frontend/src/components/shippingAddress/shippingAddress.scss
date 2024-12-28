@@ -1,0 +1,64 @@
+.shipping {
+  width: 60%;
+  padding: 80px 20px;
+  @media (max-width: 1199px) {
+    width: 50%;
+  }
+  @media (max-width: 991px) {
+    width: 100%;
+    padding: 50px 0;
+  }
+  .form_wrapper {
+    @media (max-width: 991px) {
+      padding: 0 50px;
+    }
+    @media (max-width: 767px) {
+        padding: 0 40px;
+      }
+      @media (max-width: 575px) {
+        padding: 0 20px;
+      }
+    form {
+      .field {
+        input {
+          margin: 0 10px;
+          @media (max-width: 991px) {
+            margin: 0 5px;
+          }
+        }
+        p{
+          margin: 5px 10px 0;
+        }
+      }
+      .field_wrap {
+        display: flex;
+        justify-content: space-between;
+        .field {
+          width: 50%;
+          input {
+            margin: 0 10px;
+            @media (max-width: 991px) {
+              margin: 0 5px;
+            }
+          }
+        }
+        &.names {
+          .field {
+            width: 50%;
+          }
+        }
+        &.cityState {
+          .field {
+            width: 33.33%;
+          }
+        }
+      }
+      .responsive_cartlive{
+        display: none;
+        @media(max-width:991px){
+            display: block;
+        }
+      }
+    }
+  }
+}

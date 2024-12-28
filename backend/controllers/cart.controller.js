@@ -3,7 +3,7 @@ import User from "../models/user.model.js";
 import Product from "../models/product.model.js";
 
 export const addToCart = async (req, res) => {
-  const { productId, name, price, image, quantity } = req.body;
+  const { productId, name, price, image, quantity, totalQuantity } = req.body;
 
   const user = await User.findById(req.user?._id);
 
@@ -33,7 +33,7 @@ export const addToCart = async (req, res) => {
     if (existingProduct) {
       existingProduct.quantity += quantity;
     } else {
-      user.cart.push({ productId, name, price, image, quantity });
+      user.cart.push({ productId, name, price, image, quantity, totalQuantity  });
     }
 
     await user.save();
@@ -116,6 +116,10 @@ export const getCartProducts = async (req, res) => {
   try {
     if (user && user?.cart?.length > 0) {
       res.status(200).json({ success: true, data: user.cart });
+    } else {
+      res
+        .status(200)
+        .json({ success: true, message: "Empty cart", data: user.cart });
     }
   } catch (error) {
     console.error("Error in cart products");

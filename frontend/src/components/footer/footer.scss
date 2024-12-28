@@ -1,11 +1,10 @@
 footer {
   padding: 20px 0 50px;
-  box-shadow: rgba(0, 0, 0, 0.20) 0px -10px 20px -10px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px -10px 20px -10px;
 
   .footer_wrap {
-    
     .logo {
-        margin: 0 0 20px;
+      margin: 0 0 20px;
       img {
         width: 60px;
         max-width: 100%;
@@ -27,7 +26,7 @@ footer {
       }
       .col1 {
         width: 25%;
-        
+
         @media (max-width: 991px) {
           width: 45%;
         }
@@ -42,6 +41,7 @@ footer {
       }
       .col2 {
         width: 35%;
+        position: relative;
         @media (max-width: 991px) {
           width: 45%;
         }
@@ -59,6 +59,12 @@ footer {
           gap: 5px;
           button {
           }
+        }
+        .sendMailMsg{
+          position: absolute;
+          bottom: 0;
+          font-size: 17px;
+          font-weight: 700;
         }
       }
       .col3 {
@@ -79,6 +85,13 @@ footer {
           ul {
             display: flex;
             gap: 8px;
+            li{
+              transition: all 0.4s;
+              cursor: pointer;
+              &:hover{
+                transform: translateY(-5px);
+              }
+            }
           }
         }
       }
@@ -98,8 +111,12 @@ footer {
             margin: 0 0 10px;
           }
           .number {
-            font-size: 18px;
-            font-weight: 500;
+            a {
+              color: #000;
+              text-decoration: none;
+              font-size: 18px;
+              font-weight: 500;
+            }
           }
         }
       }

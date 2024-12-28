@@ -1,0 +1,25 @@
+.checkout {
+  &_wrap {
+    display: flex;
+    justify-content: space-between;
+    @media (max-width: 991px) {
+      flex-direction: column;
+    }
+    .checkout_wrap_cartline {
+      display: block;
+      background-color: rgb(230, 230, 230);
+      padding: 80px 40px;
+      width: 40%;
+      @media (max-width: 1199px) {
+        width: 50%;
+      }
+      @media (max-width: 991px) {   
+        width: 100%;
+        padding: 50px 0;
+      }
+      @media (max-width: 991px) {
+        display: none;
+      }
+    }
+  }
+}

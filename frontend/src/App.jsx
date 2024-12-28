@@ -12,8 +12,28 @@ import Cart from "./pages/cart/Cart";
 import WishList from "./pages/wishList/WishList";
 import Users from "./pages/users/Users";
 import AdminLayout from "./components/layout/AdminLayout";
+import Checkout from "./pages/checkout/Checkout";
+import Thankyou from "./pages/thankyou/Thankyou";
+import { useEffect } from "react";
+import ProductDetail from "./pages/productDetail/ProductDetail";
+import OrderHistory from "./pages/orderHistory/OrderHistory";
+import OrdersPage from "./pages/ordersPage/OrdersPage";
 
 function App() {
+  useEffect(() => {
+    const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+
+    if (
+      userInfo &&
+      userInfo.expirationTime &&
+      Date.now() > userInfo.expirationTime
+    ) {
+      localStorage.removeItem("userInfo");
+      localStorage.removeItem("cart");
+      console.log("User info has expired and is removed from localStorage.");
+    }
+  }, []);
+
   return (
     <Routes>
       {/* Public Routes */}
@@ -34,6 +54,11 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/wishlist" element={<WishList />} />
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/thank-you" element={<Thankyou />} />
+        <Route path="/order-history" element={<OrderHistory />} />
+        <Route path="/product/:name" element={<ProductDetail />} />
+       
       </Route>
 
       {/* Admin Layout and Protected Routes */}
@@ -46,6 +71,7 @@ function App() {
       >
         <Route path="/dashboard" element={<Admin />} />
         <Route path="/users" element={<Users />} />
+        <Route path="/orders" element={<OrdersPage />} />
       </Route>
     </Routes>
   );

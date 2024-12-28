@@ -3,12 +3,17 @@ import Input from "../../components/formComponent/inputField/Input";
 import { RegisterValidation } from "../../validationSchema/ValidationSchema";
 import SubmitButton from "../../components/formComponent/submitButton/SubmitButton";
 import FormHeading from "../../components/formComponent/formHeading/FormHeading";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "../../features/authSlice";
 import { useNavigate } from "react-router-dom";
+import FormSubmitStatus from "../../components/formSubmitStatus/FormSubmitStatus";
+import PageTransition from "../../components/pageTransition/PageTransition";
+import { useState } from "react";
 
 const Register = () => {
-  // const registeredUser = useSelector((state) => state?.auth?.register?.data);
+  const [formStatus, setFormStatus] = useState(false);
+  const registeredUser = useSelector((state) => state?.auth?.register);
+  console.log("register user", registeredUser);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -27,6 +32,12 @@ const Register = () => {
       if (result.status) {
         navigate("/login", { replace: true });
       }
+      if (result.status === false) {
+        setFormStatus(true);
+      }
+      setTimeout(() => {
+        setFormStatus(false);
+      }, 5000);
       action.resetForm();
     },
   });
@@ -74,8 +85,18 @@ const Register = () => {
             />
             <SubmitButton type={"submit"} title={"Register"} />
           </form>
+          <div className="register_link">
+            Don&apos;t have an account, please{" "}
+            <PageTransition to={"/login"}>Login</PageTransition>
+          </div>
         </div>
       </div>
+      {formStatus && (
+        <FormSubmitStatus
+          status={formStatus}
+          message={registeredUser?.message}
+        />
+      )}
     </div>
   );
 };

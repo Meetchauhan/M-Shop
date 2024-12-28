@@ -1,7 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 export const registerAdmin = createAsyncThunk("adminRegister", async (data) => {
-  const response = await fetch("http://localhost:8000/api/admin/register", {
+  const response = await fetch(`${API_BASE_URL}/admin/register`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -18,7 +20,7 @@ export const registerAdmin = createAsyncThunk("adminRegister", async (data) => {
 });
 
 export const loginAdmin = createAsyncThunk("adminLogin", async (data) => {
-  const response = await fetch("http://localhost:8000/api/admin/login", {
+  const response = await fetch(`${API_BASE_URL}/admin/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -35,7 +37,7 @@ export const loginAdmin = createAsyncThunk("adminLogin", async (data) => {
 });
 
 export const logoutAdmin = createAsyncThunk("adminLogout", async () => {
-  const response = await fetch("http://localhost:8000/api/admin/logout", {
+  const response = await fetch(`${API_BASE_URL}/admin/logout`, {
     method: "POST",
     headers: {
       "Content-Type": "Application/json",
@@ -51,7 +53,7 @@ export const logoutAdmin = createAsyncThunk("adminLogout", async () => {
 });
 
 export const getAdminProfile = createAsyncThunk("adminProfile", async () => {
-  const response = await fetch("http://localhost:8000/api/admin/profile", {
+  const response = await fetch(`${API_BASE_URL}/admin/profile`, {
     credentials: "include",
   });
 
@@ -69,7 +71,7 @@ const authAdmin = createSlice({
   initialState: {
     register: [],
     login: [],
-    profile:[],
+    profile: [],
     loading: false,
     error: null,
   },

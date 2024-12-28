@@ -22,6 +22,9 @@ const cartItemSchema = new mongoose.Schema({
     type: Number,
     default: 1,
   },
+  totalQuantity: {
+    type: Number,
+  },
 });
 
 const wishlistItemSchema = new mongoose.Schema({
@@ -47,6 +50,22 @@ const wishlistItemSchema = new mongoose.Schema({
     default: 1,
   },
 });
+// const orderItemSchema = new mongoose.Schema({
+//   cartItems: [cartItemSchema],
+//   totalAmount: {
+//     type: Number,
+//     required: true,
+//   },
+//   orderDate: {
+//     type: Date,
+//     default: Date.now,
+//   },
+//   status: {
+//     type: String,
+//     enum: ['pending', 'completed', 'shipped', 'cancelled'],
+//     default: 'pending',
+//   },
+// });
 
 const userSchema = new mongoose.Schema(
   {
@@ -68,6 +87,7 @@ const userSchema = new mongoose.Schema(
     },
     cart: [cartItemSchema],
     wishlist: [wishlistItemSchema],
+    // orders: [orderItemSchema],
   },
   {
     timestamps: true,

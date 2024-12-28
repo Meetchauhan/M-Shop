@@ -66,11 +66,13 @@ const Header = () => {
                   profile={() => setToggleProfile(false)}
                 >
                   <img src={cart} alt="cart" />
-                  <sup>
-                    <span>
-                      {cartProducts?.length > 0 && cartProducts?.length}
-                    </span>
-                  </sup>
+                  {cartProducts?.length > 0 && (
+                    <sup>
+                      <span>
+                        {cartProducts?.length > 0 && cartProducts?.length}
+                      </span>
+                    </sup>
+                  )}
                 </PageTransition>
               </li>
               <li className="desktop">
@@ -79,11 +81,11 @@ const Header = () => {
                   profile={() => setToggleProfile(false)}
                 >
                   Cart
-                  <sup>
-                    <span>
-                      {cartProducts?.length > 0 && cartProducts?.length}
-                    </span>
-                  </sup>
+                  {cartProducts?.length > 0 && (
+                    <sup>
+                      <span>{cartProducts?.length}</span>
+                    </sup>
+                  )}
                 </PageTransition>
               </li>
               <li className="mobile">
@@ -92,12 +94,11 @@ const Header = () => {
                   to="/wishlist"
                 >
                   <img src={wishlist} alt="wishlist" />
-                  <sup>
-                    <span>
-                      {" "}
-                      {wishListProducts?.length > 0 && wishListProducts?.length}
-                    </span>
-                  </sup>
+                  {wishListProducts?.length > 0 && (
+                    <sup>
+                      <span>{wishListProducts?.length}</span>
+                    </sup>
+                  )}
                 </PageTransition>
               </li>
               <li className="desktop">
@@ -106,11 +107,30 @@ const Header = () => {
                   to="/wishlist"
                 >
                   Wishlist
-                  <sup>
-                    <span>
-                      {wishListProducts?.length > 0 && wishListProducts?.length}
-                    </span>
-                  </sup>
+                  {wishListProducts?.length > 0 && (
+                    <sup>
+                      <span>
+                        {wishListProducts?.length > 0 &&
+                          wishListProducts?.length}
+                      </span>
+                    </sup>
+                  )}
+                </PageTransition>
+              </li>
+              <li className="desktop">
+                <PageTransition
+                  profile={() => setToggleProfile(false)}
+                  to="/order-history"
+                >
+                  All Orders
+                </PageTransition>
+              </li>
+              <li className="mobile">
+                <PageTransition
+                  profile={() => setToggleProfile(false)}
+                  to="/order-history"
+                >
+                  All Orders
                 </PageTransition>
               </li>
             </ul>

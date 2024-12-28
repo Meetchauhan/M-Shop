@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
-import "./contactBtn.scss"
+import "./contactBtn.scss";
 const ContactBtn = ({ primaryText, alternateText, onClick }) => {
   return (
-    <button className="contactBtn" role="button" onClick={onClick}>
+    <button className="contactBtn" role="button" onClick={onClick} >
       <span className="">{primaryText}</span>
       <span>{alternateText}</span>
     </button>

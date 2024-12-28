@@ -1,0 +1,76 @@
+.ordersPage {
+  @media (max-width: 767px) {
+    overflow-x: scroll;
+  }
+  .ordersPage_inner {
+    table {
+      padding: 0 20px;
+      tbody {
+        tr {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          &.user_wrapper {
+            td {
+              font-weight: 700;
+            }
+          }
+          td {
+            &.ordersPage_orders {
+              width: 55px !important;
+            }
+            &.ordersPage_date {
+              width: 30%;
+            }
+            &.ordersPage_total {
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              img {
+                width: 12px;
+              }
+            }
+            &.ordersPage_status {
+              position: relative;
+              cursor: pointer;
+              .statusModel {
+                position: absolute;
+                bottom: -100px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: #b8b7c4;
+                padding: 20px;
+                z-index: 9;
+                .close{
+                  position: absolute;
+                  z-index: 9999;
+                  top: 0;
+                  background-color: white;
+                  padding: 5px;
+                  cursor: pointer;
+                }
+                form{
+                  select{
+                    font-size: 16px;
+                    padding: 5px;
+                    cursor: pointer;
+                    margin: 0 0 10px;
+                  }
+                  button{
+                    padding: 3px 6px;
+                    font-size: 14px;
+                    background-color: white;
+                    border-radius: 5px;
+                  }
+                }
+              }
+            }
+          }
+          &:first-child td {
+            font-weight: 700;
+          }
+        }
+      }
+    }
+  }
+}

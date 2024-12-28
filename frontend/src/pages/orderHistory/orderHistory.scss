@@ -1,0 +1,14 @@
+.orderStatus{
+    padding: 0 0 50px;
+ h2{
+    padding: 50px 0 30px;
+    margin: 0;
+    font-size: 40px;
+    @media(max-width:1199px){
+        font-size: 35px;
+    }
+    @media(max-width:991px){
+        font-size: 30px;
+    }
+ }   
+}

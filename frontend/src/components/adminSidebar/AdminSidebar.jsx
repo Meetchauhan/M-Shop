@@ -34,6 +34,11 @@ const AdminSidebar = () => {
             </Link>
           </li>
           <li>
+            <Link to="/orders" onClick={() => dispatch(closeSidebar())}>
+              Orders
+            </Link>
+          </li>
+          <li>
             <LogoutAdmin />
           </li>
         </ul>

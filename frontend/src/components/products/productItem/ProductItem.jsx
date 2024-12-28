@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import "./productItem.scss";
 import { useDispatch, useSelector } from "react-redux";
-
 import wishlist from "../../../images/wishlist.svg";
 import wishlist2 from "../../../images/wishlist2.svg";
 import { addToCart, fetchProduct } from "../../../features/cartSlice";
@@ -16,6 +15,7 @@ import {
   getWishlistItem,
   removeWishlist,
 } from "../../../features/wishlistSlice";
+import PageTransition from "../../pageTransition/PageTransition";
 
 const ProductItem = ({
   productId,
@@ -23,7 +23,7 @@ const ProductItem = ({
   price,
   image,
   quantity,
-  isProductAvailable,
+  totalQuantity,
 }) => {
   const [isImageLoading, setIsImageLoading] = useState(false);
   const dispatch = useDispatch();
@@ -31,9 +31,9 @@ const ProductItem = ({
   const wishlistItem = useSelector((state) => state?.wishlist?.wishlist);
 
   const handleCart = () => {
-    dispatch(addToCart({ productId, name, price, image, quantity: 1 })).then(
-      () => dispatch(fetchProduct())
-    );
+    dispatch(
+      addToCart({ productId, name, price, image, quantity: 1, totalQuantity })
+    ).then(() => dispatch(fetchProduct()));
   };
   const handleWishList = () => {
     const isWishlisted = wishlistItem?.data;
@@ -55,6 +55,7 @@ const ProductItem = ({
   return (
     <div className="productItem">
       <div className="productItem_wrapper">
+        <PageTransition to={`/product/${name}`}></PageTransition>
         <div className="product_image">
           {!isImageLoading && (
             <SkeletonTheme baseColor="#e0e0e0" highlightColor="#f5f5f5">
@@ -78,9 +79,9 @@ const ProductItem = ({
             <img src={currency} alt="currency" />
             <span> {price.toLocaleString("en-IN")}</span>
           </div>
-          {quantity && <h6>Quantity : {quantity}</h6>}
+          {/* {quantity && <h6>Quantity : {quantity}</h6>} */}
 
-          {isProductAvailable > 0 ? (
+          {quantity > 0 ? (
             <div className="btns">
               {location.pathname !== "/cart" && (
                 <AddToCartBtn title={"Add to Cart"} onClick={handleCart} />
@@ -111,5 +112,5 @@ ProductItem.propTypes = {
   price: PropTypes.number,
   image: PropTypes.string,
   quantity: PropTypes.number,
-  isProductAvailable : PropTypes.number
+  totalQuantity: PropTypes.number,
 };

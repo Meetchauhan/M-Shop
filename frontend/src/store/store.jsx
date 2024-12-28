@@ -7,6 +7,12 @@ import cartSlice from "../features/cartSlice";
 import userSlice from "../features/userSlice";
 import wishlistSlice from "../features/wishlistSlice";
 import sidebarSlice from "../features/sidebarSlice";
+import paymentSlice from "../features/paymentSlice";
+import ordersSlice from "../features/ordersSlice";
+import thankyouSlice from "../features/thankyouSlice";
+import enqueryMailSlice from "../features/enqueryMailSlice";
+import orderStatusSlice from "../features/orderStatusSlice";
+import orderMailSlice from "../features/orderMailSlice";
 
 export const store = configureStore({
   reducer: {
@@ -17,6 +23,12 @@ export const store = configureStore({
     cart: cartSlice,
     allUser: userSlice,
     wishlist: wishlistSlice,
-    sidebar : sidebarSlice
+    sidebar: sidebarSlice,
+    payment: paymentSlice,
+    orders: ordersSlice,
+    thankyou: thankyouSlice,
+    enquery: enqueryMailSlice,
+    orderStatus: orderStatusSlice,
+    orderMail: orderMailSlice,
   },
 });

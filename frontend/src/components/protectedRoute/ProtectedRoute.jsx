@@ -6,28 +6,40 @@ const ProtectRoute = ({ children, allowedRoles }) => {
   const adminInfo = JSON.parse(localStorage.getItem("adminInfo") || "null");
   const { pathname } = useLocation();
 
-  // Determine the current role
   const currentRole = userInfo ? "user" : adminInfo ? "admin" : null;
 
-  // Define routes allowed for each role
   const allowedRoutesForRoles = {
-    user: ["/", "/profile", "/cart", "/wishlist"],
-    admin: ["/dashboard", "/users"],
+    user: [
+      "/",
+      "/profile",
+      "/cart",
+      "/wishlist",
+      "/checkout",
+      "/thank-you",
+      "/order-history",
+      "/product/:productId",
+    ],
+    admin: ["/dashboard", "/users", "/orders"],
   };
 
-  // Redirect if no role or role mismatch
+  const isRouteAllowed = (routeList, path) => {
+    return routeList.some((route) => {
+      const routePattern = new RegExp(`^${route.replace(/:\w+/g, "[^/]+")}$`);
+      return routePattern.test(path);
+    });
+  };
+
   if (!currentRole || !allowedRoles.includes(currentRole)) {
     return <Navigate to="/login" replace />;
   }
 
-  // Redirect to the default route if accessing unauthorized paths
   const allowedRoutes = allowedRoutesForRoles[currentRole];
-  if (!allowedRoutes.includes(pathname)) {
+  if (!isRouteAllowed(allowedRoutes, pathname)) {
     const defaultRoute = currentRole === "admin" ? "/dashboard" : "/";
     return <Navigate to={defaultRoute} replace />;
   }
 
-  // Render the children if authorized
+  // Render children if authorized
   return children;
 };
 

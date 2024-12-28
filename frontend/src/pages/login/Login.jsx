@@ -9,11 +9,14 @@ import { getProfile, loginUser } from "../../features/authSlice";
 import { useNavigate } from "react-router-dom";
 import FormSubmitStatus from "../../components/formSubmitStatus/FormSubmitStatus";
 import { fetchProduct } from "../../features/cartSlice";
+import PageTransition from "../../components/pageTransition/PageTransition";
+import { useState } from "react";
 
 const Login = () => {
+  const [formStatus, setFormStatus] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const loginData = useSelector((state) => state);
+  const loginData = useSelector((state) => state?.auth?.data);
   const initialValue = {
     email: "",
     password: "",
@@ -34,7 +37,13 @@ const Login = () => {
       console.log("result profile", profileResult);
       dispatch(fetchProduct()).unwrap();
       await result.status;
-      action.resetForm(); 
+      if (result.status === false) {
+        setFormStatus(true);
+      }
+      setTimeout(() => {
+        setFormStatus(false);
+      }, 5000);
+      action.resetForm();
     },
   });
   return (
@@ -64,11 +73,15 @@ const Login = () => {
               />
               <SubmitButton type={"submit"} title={"Login"} />
             </form>
+            <div className="register_link">
+              Don&apos;t have an account, please{" "}
+              <PageTransition to={"/register"}>Register</PageTransition>
+            </div>
           </div>
         </div>
       </div>
-      {loginData?.auth?.data?.status === false && (
-        <FormSubmitStatus status={loginData?.auth?.data?.message} />
+      {formStatus && (
+        <FormSubmitStatus status={formStatus} message={loginData?.message} />
       )}
     </>
   );

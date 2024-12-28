@@ -1,0 +1,122 @@
+.allOrders {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0px 0px 1px;
+  padding: 20px;
+  border-radius: 5px;
+  margin: 20px;
+  @media (max-width: 767px) {
+    padding: 10px 10px 20px;
+    margin: 10px 10px 20px;
+  }
+  @media (max-width: 575px) {
+    padding: 5px 10px 5px;
+    margin: 5px 5px 20px;
+  }
+  .allOrders_inner {
+    border-bottom: 1px solid rgb(161, 161, 161);
+    margin: 0 0 20px;
+    padding: 0 0 20px;
+  }
+  &_wrap {
+    display: flex;
+    justify-content: space-between;
+    @media (max-width: 575px) {
+      flex-direction: column;
+    }
+    &_left {
+      display: flex;
+      align-items: center;
+      &_image {
+        width: 100px;
+        height: 100px;
+        img {
+          max-width: 100%;
+          display: block;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      &_title {
+        font-size: 20px;
+        padding-left: 20px;
+        text-transform: capitalize;
+        @media (max-width: 575px) {
+          font-size: 18px;
+        }
+      }
+    }
+    &_right {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      @media (max-width: 575px) {
+        flex-direction: row;
+        margin: 20px 0 0;
+        justify-content: space-between;
+      }
+      &_quantity {
+        font-size: 18px;
+        padding: 0 0 20px;
+        font-weight: 600;
+        @media (max-width: 575px) {
+          font-size: 16px;
+          padding: 0;
+        }
+      }
+      &_price {
+        font-size: 18px;
+        font-weight: 600;
+        display: flex;
+        @media (max-width: 575px) {
+          font-size: 16px;
+        }
+        span {
+          display: inline-flex;
+          padding-left: 5px;
+          img {
+            width: 14px;
+          }
+        }
+      }
+    }
+  }
+  &_bottom {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @media(max-width:575px){
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    &_orderStatus {
+      font-size: 18px;
+      font-weight: 700;
+      @media(max-width:575px){
+        font-size: 17px;
+      }
+      span{
+        text-transform: capitalize;
+      }
+    }
+    &_totalAmount {
+      font-size: 20px;
+      font-weight: 700;
+      display: flex;
+      justify-content: end;
+      @media (max-width: 575px) {
+        text-align: center;
+        font-size: 18px;
+        margin: 10px 0;
+      }
+      span {
+        display: inline-flex;
+        padding-left: 5px;
+        font-size: 18px;
+        img {
+          width: 13px;
+        }
+      }
+    }
+  }
+}

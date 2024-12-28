@@ -9,6 +9,7 @@ const Input = ({
   placeholder,
   touched,
   errors,
+  className
 }) => {
   return (
     <div className="field">
@@ -18,6 +19,7 @@ const Input = ({
         onChange={handleChange}
         value={values}
         placeholder={placeholder}
+        className={className}
       />
       <p>{touched && errors}</p>
     </div>
@@ -33,4 +35,5 @@ Input.propTypes = {
   placeholder: PropTypes.string,
   touched: PropTypes.bool,
   errors: PropTypes.string,
+  className: PropTypes.string
 };

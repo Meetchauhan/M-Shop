@@ -10,6 +10,10 @@ import adminRouter from "./routes/admin.route.js";
 import totalAmountRouter from "./routes/totalAmount.route.js";
 import cartRouter from "./routes/cart.route.js";
 import wishlistRouter from "./routes/wishlist.route.js";
+import paymentRouter from "./routes/payment.route.js";
+import ordersRouter from "./routes/order.route.js";
+import enqueryMailRouter from "./routes/enqueryMail.route.js";
+import orderMailRouter from "./routes/orderMail.route.js";
 import { fileURLToPath } from "url";
 import path from "path";
 
@@ -57,6 +61,10 @@ app.use("/api/admin", adminRouter);
 app.use("/api", totalAmountRouter);
 app.use("/api/cart", cartRouter);
 app.use("/api/wishlist", wishlistRouter);
+app.use("/api", paymentRouter);
+app.use("/api", ordersRouter);
+app.use("/api", enqueryMailRouter);
+app.use("/api", orderMailRouter);
 
 app.get("/", (req, res) => {
   res.send("Server is Ready");

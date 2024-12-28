@@ -36,3 +36,23 @@ export const ProfileValidation = Yup.object().shape({
   email: Yup.string().email().required("Email is required"),
   password: Yup.string().required("Password is required"),
 });
+
+export const ShippingValidation = Yup.object().shape({
+  address: Yup.string()
+    .min(5, "Address is too Short!!")
+    .max(100, "Address is too Long!!")
+    .required("Address is required"),
+  phone: Yup.string()
+    .max(10, "Wrong phone number")
+    .required("Phone number is required"),
+  city: Yup.string().required("City is requuired"),
+  state: Yup.string().required("State is required"),
+  pincode: Yup.string()
+    .min(6, "Wrong pincode")
+    .max(6, "Wrong pincode")
+    .required("Pincode is required"),
+});
+
+export const enquiryFormValidation = Yup.object().shape({
+  email: Yup.string().required("Email is required"),
+});

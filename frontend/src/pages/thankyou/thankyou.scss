@@ -1,0 +1,40 @@
+.thankyou {
+  padding: 0 0 60px;
+
+  h2 {
+    padding: 60px 0;
+    margin: 0;
+  }
+  .recent_orders {
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px,
+      #d1d5db 0px 0px 0px 1px inset;
+    padding: 40px;
+    border-radius: 5px;
+    @media (max-width: 767px) {
+      padding: 20px;
+    }
+    @media (max-width: 575px) {
+      padding: 10px;
+    }
+    &_wrap {
+    }
+    &_totalAmount {
+      font-size: 22px;
+      padding-top: 20px;
+      display: flex;
+      justify-content: end;
+
+      @media (max-width: 575px) {
+        font-size: 20px;
+        padding-top: 5px;
+      }
+      span {
+        padding-left: 5px;
+        display: inline-flex;
+        img {
+          width: 15px;
+        }
+      }
+    }
+  }
+}

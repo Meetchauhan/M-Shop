@@ -1,7 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 export const addToCart = createAsyncThunk("addToCart", async (data) => {
-  const response = await fetch("http://localhost:8000/api/cart/addToCart", {
+  const response = await fetch(`${API_BASE_URL}/cart/addToCart`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -19,7 +20,7 @@ export const addToCart = createAsyncThunk("addToCart", async (data) => {
 
 export const fetchProduct = createAsyncThunk("fetchProducts", async () => {
   const response = await fetch(
-    "http://localhost:8000/api/cart/cart-products",
+    `${API_BASE_URL}/cart/cart-products`,
     {
       credentials: "include",
     }
@@ -34,7 +35,7 @@ export const fetchProduct = createAsyncThunk("fetchProducts", async () => {
 
 export const reduceProduct = createAsyncThunk("reduceProduct", async (data) => {
   const response = await fetch(
-    "http://localhost:8000/api/cart/decreaseProduct",
+    `${API_BASE_URL}/cart/decreaseProduct`,
     {
       method: "POST",
       headers: {
@@ -57,7 +58,7 @@ export const increaseProduct = createAsyncThunk(
   "increaseProduct",
   async (data) => {
     const response = await fetch(
-      "http://localhost:8000/api/cart/increaseProduct",
+      `${API_BASE_URL}/cart/increaseProduct`,
       {
         method: "POST",
         headers: {
@@ -81,7 +82,7 @@ export const removeFromCart = createAsyncThunk(
   "removeFromCart",
   async (data) => {
     const response = await fetch(
-      "http://localhost:8000/api/cart/removeCart",
+      `${API_BASE_URL}/cart/removeCart`,
       {
         method: "POST",
         headers: {
@@ -102,7 +103,7 @@ export const removeFromCart = createAsyncThunk(
 
 export const totalAmount = createAsyncThunk("totalAmount", async () => {
   const response = await fetch(
-    "http://localhost:8000/api/totalAmount",
+    `${API_BASE_URL}/totalAmount`,
     {
       credentials: "include",
     }
@@ -116,7 +117,7 @@ export const totalAmount = createAsyncThunk("totalAmount", async () => {
 });
 
 // export const emptyCart = createAsyncThunk("logout", async () => {
-//   const response = await fetch("http://localhost:8000/api/user/logout", {
+//   const response = await fetch(`${API_BASE_URL}/user/logout", {
 //     method: "POST",
 //     headers: {
 //       "Content-Type": "Application/json",

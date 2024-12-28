@@ -10,19 +10,31 @@ import {
 import "./cartItem.scss";
 import deleteIcon from "../../images/delete.svg";
 import currency from "../../images/currency.svg";
+import PageTransition from "../pageTransition/PageTransition";
 
-const CartItem = ({ productId, name, price, image, quantity }) => {
+const CartItem = ({
+  productId,
+  name,
+  price,
+  image,
+  quantity,
+  totalQuantity,
+}) => {
   const dispatch = useDispatch();
   const handleIncreaseProduct = () => {
-    dispatch(increaseProduct({ productId, quantity })).then(() =>
-      dispatch(fetchProduct()).then(() => dispatch(totalAmount()))
-    );
+    if (quantity < totalQuantity) {
+      dispatch(increaseProduct({ productId, quantity })).then(() =>
+        dispatch(fetchProduct()).then(() => dispatch(totalAmount()))
+      );
+    }
   };
 
   const handleReduceProductFromCart = () => {
-    dispatch(reduceProduct({ productId, quantity })).then(() =>
-      dispatch(fetchProduct()).then(() => dispatch(totalAmount()))
-    );
+    if (quantity > 1) {
+      dispatch(reduceProduct({ productId, quantity })).then(() =>
+        dispatch(fetchProduct()).then(() => dispatch(totalAmount()))
+      );
+    }
   };
   const handleRemoveProductFromCart = () => {
     dispatch(removeFromCart({ productId })).then(() =>
@@ -35,7 +47,9 @@ const CartItem = ({ productId, name, price, image, quantity }) => {
       <div className="container">
         <div className="cartItem_wrapper">
           <div className="image">
-            <img src={image} alt={name} />
+            <PageTransition to={`/product/${name}`}>
+              <img src={image} alt={name} />
+            </PageTransition>
           </div>
           <h4 className="h4">{name}</h4>
           <div className="price">
@@ -61,6 +75,9 @@ const CartItem = ({ productId, name, price, image, quantity }) => {
             <img src={deleteIcon} alt="deleteIcon" />
           </div>
         </div>
+        {quantity === totalQuantity && (
+          <div className="error">{`You have reached the limit of ${totalQuantity} units for this product...!!`}</div>
+        )}
       </div>
     </div>
   );
@@ -73,4 +90,5 @@ CartItem.propTypes = {
   name: PropTypes.string,
   price: PropTypes.number,
   quantity: PropTypes.number,
+  totalQuantity: PropTypes.number,
 };

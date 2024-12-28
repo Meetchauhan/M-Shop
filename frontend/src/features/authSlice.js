@@ -1,7 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export const registerUser = createAsyncThunk("register", async (data) => {
-  const response = await fetch("http://localhost:8000/api/user/register", {
+  const response = await fetch(`${API_BASE_URL}/user/register`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -18,7 +19,7 @@ export const registerUser = createAsyncThunk("register", async (data) => {
 });
 
 export const loginUser = createAsyncThunk("login", async (data) => {
-  const response = await fetch("http://localhost:8000/api/user/login", {
+  const response = await fetch(`${API_BASE_URL}/user/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -36,7 +37,7 @@ export const loginUser = createAsyncThunk("login", async (data) => {
 });
 
 export const logoutUser = createAsyncThunk("logout", async () => {
-  const response = await fetch("http://localhost:8000/api/user/logout", {
+  const response = await fetch(`${API_BASE_URL}/user/logout`, {
     method: "POST",
     headers: {
       "Content-Type": "Application/json",
@@ -52,7 +53,7 @@ export const logoutUser = createAsyncThunk("logout", async () => {
 });
 
 export const getProfile = createAsyncThunk("getProfile", async () => {
-  const response = await fetch("http://localhost:8000/api/user/profile", {
+  const response = await fetch(`${API_BASE_URL}/user/profile`, {
     credentials: "include",
   });
 
@@ -66,7 +67,7 @@ export const getProfile = createAsyncThunk("getProfile", async () => {
 });
 
 export const updateProfile = createAsyncThunk("updateProfile", async (data) => {
-  const response = await fetch("http://localhost:8000/api/user/update", {
+  const response = await fetch(`${API_BASE_URL}/user/update`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -112,8 +113,16 @@ const authUser = createSlice({
       .addCase(loginUser.fulfilled, (state, action) => {
         state.loading = false;
         state.data = action.payload;
-        localStorage.setItem("userInfo", JSON.stringify({status : true}));
-        localStorage.setItem("cart", JSON.stringify("Cart123*#Item#*"))
+        const expirationTime = Date.now() + 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+
+        localStorage.setItem(
+          "userInfo",
+          JSON.stringify({
+            status: true,
+            expirationTime: expirationTime,
+          })
+        );
+        localStorage.setItem("cart", JSON.stringify("Cart123*#Item#*"));
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false;
@@ -126,7 +135,7 @@ const authUser = createSlice({
         state.loading = false;
         localStorage.removeItem("userInfo");
         localStorage.removeItem("profile");
-        localStorage.removeItem("cart")
+        localStorage.removeItem("cart");
         state.profile = [];
       })
       .addCase(logoutUser.rejected, (state, action) => {

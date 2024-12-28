@@ -8,13 +8,13 @@ import AdminFooter from "../adminFooter/AdminFooter";
 
 const AdminLayout = () => {
   return (
-    <Fragment>
+    <>
       <AdminHeader />
       <main>
         <Outlet />
       </main>
       <AdminFooter />
-    </Fragment>
+    </>
   );
 };
 export default AdminLayout;

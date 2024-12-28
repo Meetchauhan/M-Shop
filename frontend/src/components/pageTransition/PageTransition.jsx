@@ -11,7 +11,7 @@ const PageTransition = ({ profile, children, to, ...props }) => {
 
   const handleTransition = async (e) => {
     e.preventDefault();
-    profile();
+    profile && profile();
     if (to === location.pathname) {
       return;
     }
