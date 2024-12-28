@@ -16,4 +16,4 @@ router.route("/cart-products").get(protect, getCartProducts);
 router.route("/decreaseProduct").post(protect, decreaseProductFromCart);
 router.route("/increaseProduct").post(protect, increaseProductFromCart);
 router.route("/removeCart").post(protect, removeFromCart);
-export default router;
+export default router; 
