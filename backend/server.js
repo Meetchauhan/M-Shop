@@ -70,7 +70,7 @@ app.use("/api", orderMailRouter);
 //   res.send("Server is Ready ---");
 // });
 
-app.get('/api', (req, res) => {
+app.get('/', (req, res) => {
    res.send("Server is Ready ---");
   connectDB();
 });
