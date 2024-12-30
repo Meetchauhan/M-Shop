@@ -28,11 +28,11 @@ const PORT = process.env.PORT || 8000;
 // Set up CORS middleware
 app.use(
   cors({
-    origin: "https://m-shop-gq4d.vercel.app/",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true,
-  })
+  origin: ["http://localhost:5000", "https://m-shop-gq4d.vercel.app"],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
+});
 );
 
 // Set up Multer for file uploads
