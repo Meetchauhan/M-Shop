@@ -67,7 +67,7 @@ app.use("/api", enqueryMailRouter);
 app.use("/api", orderMailRouter);
 
 app.get("/", (req, res) => {
-  res.send("Server is Ready");
+  res.send("Server is Ready ---");
 });
 
 // Start the server
