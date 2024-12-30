@@ -33,6 +33,7 @@ app.use(
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
   })
+  );
 
 // Set up Multer for file uploads
 const storage = multer.diskStorage({
