@@ -72,6 +72,7 @@ app.use("/api", orderMailRouter);
 
 app.get('/api', (req, res) => {
    res.send("Server is Ready ---");
+  connectDB();
 });
 
 
