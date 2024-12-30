@@ -30,7 +30,7 @@ app.use(
   cors({
     origin: "https://m-shop-nu.vercel.app/api",
     methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
+    // allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
   })
 );
