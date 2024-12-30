@@ -66,9 +66,14 @@ app.use("/api", ordersRouter);
 app.use("/api", enqueryMailRouter);
 app.use("/api", orderMailRouter);
 
-app.get("/", (req, res) => {
-  res.send("Server is Ready ---");
+// app.get("/", (req, res) => {
+//   res.send("Server is Ready ---");
+// });
+
+app.get('/api', (req, res) => {
+   res.send("Server is Ready ---");
 });
+
 
 // Start the server
 app.listen(PORT, () => {
