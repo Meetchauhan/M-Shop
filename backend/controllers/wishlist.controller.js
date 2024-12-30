@@ -76,6 +76,8 @@ export const getWishlistProducts = async (req, res) => {
   try {
     if (user && user?.wishlist?.length > 0) {
       res.status(200).json({ success: true, data: user.wishlist });
+    }else{
+      res.status(200).json({ success: false, message:"Empty wishlist", data: user.wishlist });
     }
   } catch (error) {
     console.error("Error in cart products");
