@@ -28,10 +28,10 @@ const PORT = process.env.PORT || 8000;
 // Set up CORS middleware
 app.use(
   cors({
-    origin: "https://m-shop-1.onrender.com",
+    origin: "*",
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true,
+    // credentials: true,
   })
   );
 
