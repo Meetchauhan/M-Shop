@@ -10,6 +10,7 @@ export const generateToken = (res, userId) => {
     httpOnly: true,
     secure: true,
     sameSite: "None",
+    domain:"https://m-shop-1.onrender.com",
     maxAge: 24 * 60 * 60 * 1000,
   });
 };
