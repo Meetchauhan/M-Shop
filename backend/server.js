@@ -28,7 +28,7 @@ const PORT = process.env.PORT || 8000;
 // Set up CORS middleware
 app.use(
   cors({
-    origin: "https://resonant-dieffenbachia-9c5945.netlify.app",
+    origin: ["https://resonant-dieffenbachia-9c5945.netlify.app", "https://m-shop-gq4d.vercel.app],
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
