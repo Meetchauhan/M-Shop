@@ -12,12 +12,18 @@ export default defineConfig({
     },
   },
   server: {
-    port: 5000,
+    host: "0.0.0.0", // Bind to all network interfaces
+    port: parseInt(process.env.PORT) || 5000, // Use Render's PORT environment variable if available
     proxy: {
       "/api": {
-        target: "http:localhost:5000",
+        target: "http://localhost:5000", // Correct the URL format (add `http://`)
         changeOrigin: true,
+        secure: false, // Disable SSL verification for local proxy
       },
     },
+  },
+  preview: {
+    host: "0.0.0.0", // Bind preview to all network interfaces
+    port: parseInt(process.env.PORT) || 5000, // Use Render's PORT for preview
   },
 });
