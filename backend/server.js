@@ -28,7 +28,7 @@ const PORT = process.env.PORT || 8000;
 // Set up CORS middleware
 app.use(
   cors({
-    origin: ["https://guileless-centaur-857f5a.netlify.app/login", "https://m-shop-gq4d.vercel.app"],
+    origin: ["https://m-shop-gq4d.vercel.app", "https://guileless-centaur-857f5a.netlify.app/login"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
