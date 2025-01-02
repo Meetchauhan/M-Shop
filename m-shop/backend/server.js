@@ -69,9 +69,12 @@ app.use("/api", orderMailRouter);
 // app.get("/", (req, res) => {
 //   res.send("Server is Ready ---");
 // });
+app.use(express.static(path.join(__dirname, "../frontend/dist"))); // Adjust path if needed
 
+// Fallback route for React
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../frontend/dist/index.html")); // Adjust path
+   connectDB();
 });
 
 app.get('/', (req, res) => {
