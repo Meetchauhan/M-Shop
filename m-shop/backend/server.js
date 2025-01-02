@@ -28,7 +28,7 @@ const PORT = process.env.PORT || 8000;
 // Set up CORS middleware
 app.use(
   cors({
-    origin: ["https://m-shop-gq4d.vercel.app", "https://guileless-centaur-857f5a.netlify.app", "https://m-shop-2.onrender.com"],
+    origin: ["https://m-shop-gq4d.vercel.app", "https://guileless-centaur-857f5a.netlify.app", "https://m-shop-2.onrender.com", "http://localhost:5001"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
@@ -70,10 +70,13 @@ app.use("/api", orderMailRouter);
 //   res.send("Server is Ready ---");
 // });
 
+app.use(express.static(path.join(__dirname, "../frontend/dist"))); // Adjust path if needed
+
+// Fallback route for React
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../frontend/dist/index.html")); // Adjust path
+   connectDB();
 });
-
 app.get('/', (req, res) => {
    res.send("Server is Ready---");
   connectDB();
