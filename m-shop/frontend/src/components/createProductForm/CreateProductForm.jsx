@@ -44,10 +44,10 @@ const CreateProductForm = () => {
       },
     });
 
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    setFieldValue("image", file);
-  };
+  // const handleFileChange = (e) => {
+  //   const file = e.target.files[0];
+  //   setFieldValue("image", file);
+  // };
   console.log("create from values", values);
 
   return (
@@ -83,7 +83,7 @@ const CreateProductForm = () => {
           errors={errors.quantity}
         />
 
-        {/* <Input
+        <Input
           type={"text"}
           name={"image"}
           handleChange={handleChange}
@@ -91,8 +91,8 @@ const CreateProductForm = () => {
           placeholder={"Product Image URL"}
           touched={touched.image}
           errors={errors.image}
-        /> */}
-        <Input
+        />
+        {/* <Input
           type={"file"}
           name={"image"}
           handleChange={handleFileChange}
@@ -100,7 +100,7 @@ const CreateProductForm = () => {
           placeholder={"Product Image"}
           touched={touched.image}
           errors={errors.image}
-        />
+        /> */}
         <SubmitButton type={"submit"} title={"Add Product"} />
       </form>
     </>

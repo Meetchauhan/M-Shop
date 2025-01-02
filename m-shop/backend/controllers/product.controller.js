@@ -12,22 +12,24 @@ export const getProducts = async (req, res) => {
 };
 
 export const createProduct = async (req, res) => {
-  const { name, price, quantity, category } = req.body;
-  const file = req.file;
+  const { name, price, quantity, category, image } = req.body;
+  // const file = req.file;
 
-  if (!name || !price || !file || !quantity) {
+  // if (!name || !price || !file || !quantity) {
+  if (!name || !price || !image || !quantity) {
     return res
       .status(400)
       .json({ success: false, message: "Please provide all fields" });
   }
 
-  const imageUrl = `${req.protocol}://${req.headers.host}/uploads/${file.filename}`;
+  // const imageUrl = `${req.protocol}://${req.headers.host}/uploads/${file.filename}`;
   const newProduct = new Product({
     name,
     price,
     quantity,
     category,
-    image: imageUrl,
+    // image: imageUrl,
+    image,
   });
 
   try {
@@ -41,8 +43,8 @@ export const createProduct = async (req, res) => {
 
 export const updateProduct = async (req, res) => {
   const { id } = req.params;
-  const { name, price, quantity, category } = req.body;
-  const file = req.file;
+  const { name, price, quantity, image, category } = req.body;
+  // const file = req.file;
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res
@@ -59,16 +61,16 @@ export const updateProduct = async (req, res) => {
         .json({ success: false, message: "Product Not Found" });
     }
 
-    const imageUrl = file
-      ? `${req.protocol}://${req.headers.host}/uploads/${file.filename}`
-      : existingProduct.image;
+    // const imageUrl = file
+    //   ? `${req.protocol}://${req.headers.host}/uploads/${file.filename}`
+    //   : existingProduct.image;
 
     const updatedFields = {
       name: name || existingProduct.name,
       price: price || existingProduct.price,
       quantity: quantity || existingProduct.quantity,
       category: category || existingProduct.category,
-      image: imageUrl,
+      image: image || existingProduct.image,
     };
 
     const updatedProduct = await Product.findByIdAndUpdate(id, updatedFields, {

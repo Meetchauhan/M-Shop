@@ -25,12 +25,13 @@ const UpdateProductForm = ({ product, onSubmit }) => {
         formData.append("name", values.name);
         formData.append("price", values.price);
         formData.append("quantity", values.quantity);
+        formData.append("image", values.image);
 
-        if (values.image instanceof File) {
-          formData.append("image", values.image);
-        } else if (values.imageUrl) {
-          formData.append("existingImageUrl", values.imageUrl);
-        }
+        // if (values.image instanceof File) {
+        //   formData.append("image", values.image);
+        // } else if (values.imageUrl) {
+        //   formData.append("existingImageUrl", values.imageUrl);
+        // }
 
         onSubmit(formData);
         dispatch(closeUpdateProductModel());
@@ -75,6 +76,15 @@ const UpdateProductForm = ({ product, onSubmit }) => {
           errors={errors.quantity}
         />
         <Input
+          type={"text"}
+          name={"image"}
+          handleChange={handleChange}
+          values={values.image}
+          placeholder={"Product Image URL"}
+          touched={touched.image}
+          errors={errors.image}
+        />
+        {/* <Input
           type={"file"}
           name={"image"}
           handleChange={handleFileChange}
@@ -82,7 +92,7 @@ const UpdateProductForm = ({ product, onSubmit }) => {
           placeholder={"Product Image URL"}
           touched={touched.image}
           errors={errors.image}
-        />
+        /> */}
         <SubmitButton type={"submit"} title={"Update Product"} />
       </form>
     </>
