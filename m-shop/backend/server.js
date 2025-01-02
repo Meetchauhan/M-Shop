@@ -70,6 +70,10 @@ app.use("/api", orderMailRouter);
 //   res.send("Server is Ready ---");
 // });
 
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/dist/index.html")); // Adjust path
+});
+
 app.get('/', (req, res) => {
    res.send("Server is Ready---");
   connectDB();
