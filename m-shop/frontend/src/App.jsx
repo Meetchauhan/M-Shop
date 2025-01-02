@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Home from "./pages/home/Home";
 import Admin from "./pages/dashboard/Dashboard";
 import Register from "./pages/register/Register";
@@ -20,6 +20,7 @@ import OrderHistory from "./pages/orderHistory/OrderHistory";
 import OrdersPage from "./pages/ordersPage/OrdersPage";
 
 function App() {
+  const { pathname } = useLocation();
   useEffect(() => {
     const userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
@@ -33,6 +34,9 @@ function App() {
       console.log("User info has expired and is removed from localStorage.");
     }
   }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   return (
     <Routes>
@@ -58,7 +62,6 @@ function App() {
         <Route path="/thank-you" element={<Thankyou />} />
         <Route path="/order-history" element={<OrderHistory />} />
         <Route path="/product/:name" element={<ProductDetail />} />
-       
       </Route>
 
       {/* Admin Layout and Protected Routes */}
