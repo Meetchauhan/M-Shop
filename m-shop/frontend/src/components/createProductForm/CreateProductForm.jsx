@@ -8,6 +8,7 @@ import "./createProductForm.scss";
 import { useDispatch } from "react-redux";
 import { closeAddProductModel } from "../../features/productModelSlice";
 import { createProducts, allProducts } from "../../features/productSlice";
+import Select from "../formComponent/select/Select";
 
 const CreateProductForm = () => {
   const dispatch = useDispatch();
@@ -18,7 +19,8 @@ const CreateProductForm = () => {
     formData.append("name", productData.name);
     formData.append("price", productData.price);
     formData.append("quantity", productData.quantity);
-    formData.append("image", productData.image);    
+    formData.append("image", productData.image);
+    formData.append("category", productData.category);
     console.log("formData", formData);
 
     dispatch(createProducts(formData)).then(() => {
@@ -30,6 +32,7 @@ const CreateProductForm = () => {
     price: "",
     image: "",
     quantity: "",
+    category: "",
   };
 
   const { handleChange, handleSubmit, touched, errors, values, setFieldValue } =
@@ -73,7 +76,7 @@ const CreateProductForm = () => {
           touched={touched.price}
           errors={errors.price}
         />
-         <Input
+        <Input
           type={"number"}
           name={"quantity"}
           handleChange={handleChange}
@@ -82,7 +85,12 @@ const CreateProductForm = () => {
           touched={touched.quantity}
           errors={errors.quantity}
         />
-
+        <Select
+          name={"category"}
+          onChange={handleChange}
+          value={values.category}
+          defaultValue={"Select Category"}
+        />
         <Input
           type={"text"}
           name={"image"}

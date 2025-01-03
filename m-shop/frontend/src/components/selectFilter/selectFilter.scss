@@ -1,0 +1,18 @@
+.category_filter {
+  text-align: right;
+  margin: 0 0 40px;
+  select {
+    height: 35px;
+    font-size: 16px;
+    width: 400px;
+    cursor: pointer;
+    border: 1px solid #000;
+    border-radius: 3px;
+    background-color: white;
+    padding: 5px;
+    @media (max-width: 575px) {
+      width: 100%;
+      font-size: 15px;
+    }
+  }
+}

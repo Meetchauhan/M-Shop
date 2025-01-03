@@ -16,7 +16,7 @@ export const createProduct = async (req, res) => {
   // const file = req.file;
 
   // if (!name || !price || !file || !quantity) {
-  if (!name || !price || !image || !quantity) {
+  if (!name || !price || !image || !quantity, !category) {
     return res
       .status(400)
       .json({ success: false, message: "Please provide all fields" });

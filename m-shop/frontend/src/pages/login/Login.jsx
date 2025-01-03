@@ -16,7 +16,7 @@ const Login = () => {
   const [formStatus, setFormStatus] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const loginData = useSelector((state) => state?.auth?.data);
+  const loginData = useSelector((state) => state?.auth);
   const initialValue = {
     email: "",
     password: "",
@@ -71,7 +71,7 @@ const Login = () => {
                 touched={touched.password}
                 errors={errors.password}
               />
-              <SubmitButton type={"submit"} title={"Login"} />
+              <SubmitButton type={"submit"} title={loginData?.loading ? "Authenticating..." : "Login"} />
             </form>
             <div className="register_link">
               Don&apos;t have an account, please{" "}
@@ -81,7 +81,7 @@ const Login = () => {
         </div>
       </div>
       {formStatus && (
-        <FormSubmitStatus status={formStatus} message={loginData?.message} />
+        <FormSubmitStatus status={formStatus} message={loginData?.data?.message} />
       )}
     </>
   );

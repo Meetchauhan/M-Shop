@@ -55,6 +55,7 @@ function Products() {
                 <td className="product_name">Product Name</td>
                 <td className="product_price">Product Price</td>
                 <td className="product_quantity">Product Quantity</td>
+                <td className="product_category">Product Category</td>
                 <td className="deleteIcon">Delete Product</td>
                 <td className="deleteIcon">Edit Product</td>
               </tr>
@@ -67,10 +68,10 @@ function Products() {
                   </td>
                   <td className="product_name">{item.name}</td>
                   <td className="product_price">{item.price}.00</td>
-                  <td className="product_price">
+                  <td className="product_quantity">
                     {item.quantity ? item.quantity : 0}
                   </td>
-
+                  <td className="product_category">{item.category}</td>
                   <td
                     onClick={() => handleDelete(item._id)}
                     className="deleteIcon"

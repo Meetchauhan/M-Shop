@@ -13,6 +13,7 @@ import thankyouSlice from "../features/thankyouSlice";
 import enqueryMailSlice from "../features/enqueryMailSlice";
 import orderStatusSlice from "../features/orderStatusSlice";
 import orderMailSlice from "../features/orderMailSlice";
+import categoryFilterSlice from "../features/categoryFilterSlice";
 
 export const store = configureStore({
   reducer: {
@@ -30,5 +31,6 @@ export const store = configureStore({
     enquery: enqueryMailSlice,
     orderStatus: orderStatusSlice,
     orderMail: orderMailSlice,
+    categoryFilter: categoryFilterSlice,
   },
 });

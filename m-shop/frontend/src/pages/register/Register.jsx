@@ -12,7 +12,7 @@ import { useState } from "react";
 
 const Register = () => {
   const [formStatus, setFormStatus] = useState(false);
-  const registeredUser = useSelector((state) => state?.auth?.register);
+  const registeredUser = useSelector((state) => state?.auth);
   console.log("register user", registeredUser);
 
   const dispatch = useDispatch();
@@ -83,7 +83,12 @@ const Register = () => {
               touched={touched.password}
               errors={errors.password}
             />
-            <SubmitButton type={"submit"} title={"Register"} />
+            <SubmitButton
+              type={"submit"}
+              title={
+                registeredUser?.loading ? "Creating Account..." : "Register"
+              }
+            />
           </form>
           <div className="register_link">
             Don&apos;t have an account, please{" "}
@@ -94,7 +99,7 @@ const Register = () => {
       {formStatus && (
         <FormSubmitStatus
           status={formStatus}
-          message={registeredUser?.message}
+          message={registeredUser?.register?.message}
         />
       )}
     </div>

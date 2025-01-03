@@ -74,10 +74,26 @@ const ProductItem = ({
           />
         </div>
         <div className="productdetail_wrapper">
-          <h6> {name}</h6>
+          <h6>
+            {name ? (
+              name
+            ) : (
+              <SkeletonTheme baseColor="#e0e0e0" highlightColor="#f5f5f5">
+                <Skeleton width={"10px"} height={"10px"} duration={0.8} />
+              </SkeletonTheme>
+            )}
+          </h6>
           <div className="price">
-            <img src={currency} alt="currency" />
-            <span> {price.toLocaleString("en-IN")}</span>
+            {price ? (
+              <>
+                <img src={currency} alt="currency" />
+                <span> {price.toLocaleString("en-IN")}</span>
+              </>
+            ) : (
+              <SkeletonTheme baseColor="#e0e0e0" highlightColor="#f5f5f5">
+                <Skeleton width={"10px"} height={"10px"} duration={0.8} />
+              </SkeletonTheme>
+            )}
           </div>
           {/* {quantity && <h6>Quantity : {quantity}</h6>} */}
 

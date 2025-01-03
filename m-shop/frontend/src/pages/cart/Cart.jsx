@@ -7,6 +7,7 @@ import "./cart.scss";
 import currency from "../../images/currency.svg";
 import PageTransition from "../../components/pageTransition/PageTransition";
 import Heading from "../../components/heading/Heading";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -42,9 +43,15 @@ const Cart = () => {
       )}
       {cartProducts?.length > 0 && (
         <div className="checkout_box">
-          <div className="totalAmount">
-            Total Amount : <img src={currency} alt="currency" /> {total}
-          </div>
+          {total ? (
+            <div className="totalAmount">
+              Total Amount : <img src={currency} alt="currency" /> {total}
+            </div>
+          ) : (
+            <SkeletonTheme baseColor="#e0e0e0" highlightColor="#f5f5f5">
+              <Skeleton width={"30px"} height={"20px"} duration={0.8} />
+            </SkeletonTheme>
+          )}
           <div className="proccess_to_checkout">
             <PageTransition to="/checkout">Proccee to Checkout</PageTransition>
           </div>

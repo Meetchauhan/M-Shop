@@ -6,6 +6,7 @@ import SubmitButton from "../formComponent/submitButton/SubmitButton";
 import FormHeading from "../formComponent/formHeading/FormHeading";
 import { useDispatch } from "react-redux";
 import { closeUpdateProductModel } from "../../features/productModelSlice";
+import Select from "../formComponent/select/Select";
 
 const UpdateProductForm = ({ product, onSubmit }) => {
   const dispatch = useDispatch();
@@ -14,6 +15,7 @@ const UpdateProductForm = ({ product, onSubmit }) => {
     price: product?.price || "",
     quantity: product?.quantity || "",
     image: product?.image || "",
+    category: product?.category || "",
   };
 
   const { handleChange, handleSubmit, touched, errors, values, setFieldValue } =
@@ -26,6 +28,7 @@ const UpdateProductForm = ({ product, onSubmit }) => {
         formData.append("price", values.price);
         formData.append("quantity", values.quantity);
         formData.append("image", values.image);
+        formData.append("category", values.category);
 
         // if (values.image instanceof File) {
         //   formData.append("image", values.image);
@@ -74,6 +77,12 @@ const UpdateProductForm = ({ product, onSubmit }) => {
           placeholder={"Product Quantity"}
           touched={touched.quantity}
           errors={errors.quantity}
+        />
+        <Select
+          name={"category"}
+          onChange={handleChange}
+          value={values.category}
+          defaultValue={"Select Category"}
         />
         <Input
           type={"text"}

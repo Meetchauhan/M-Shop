@@ -11,6 +11,8 @@ import "./cartItem.scss";
 import deleteIcon from "../../images/delete.svg";
 import currency from "../../images/currency.svg";
 import PageTransition from "../pageTransition/PageTransition";
+import { useState } from "react";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 const CartItem = ({
   productId,
@@ -20,6 +22,7 @@ const CartItem = ({
   quantity,
   totalQuantity,
 }) => {
+  const [isImageLoading, setIsImageLoading] = useState(false);
   const dispatch = useDispatch();
   const handleIncreaseProduct = () => {
     if (quantity < totalQuantity) {
@@ -48,7 +51,18 @@ const CartItem = ({
         <div className="cartItem_wrapper">
           <div className="image">
             <PageTransition to={`/product/${name}`}>
-              <img src={image} alt={name} />
+              {!isImageLoading && (
+                <SkeletonTheme baseColor="#e0e0e0" highlightColor="#f5f5f5">
+                  <Skeleton width={"80px"} height={"80px"} duration={0.8} />
+                </SkeletonTheme>
+              )}
+              <img
+                src={image}
+                alt={name}
+                onLoad={() => {
+                  setIsImageLoading(true);
+                }}
+              />
             </PageTransition>
           </div>
           <h4 className="h4">{name}</h4>

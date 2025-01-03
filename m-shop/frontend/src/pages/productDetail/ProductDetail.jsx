@@ -80,6 +80,9 @@ const ProductDetail = () => {
           </div>
           <div className="productDetail_wrap_detail">
             <h2>{thisProduct.name}</h2>
+            {thisProduct?.category && (
+              <div className="category">Category : {thisProduct?.category}</div>
+            )}
             <p>
               Amount:{" "}
               <span>
