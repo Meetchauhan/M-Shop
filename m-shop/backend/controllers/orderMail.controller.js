@@ -58,20 +58,34 @@ export const sendOrderMail = async (req, res) => {
           )}</p>
 
           <h2>Shipping Address</h2>
-          <h4 style="margin:0">Name : <span style="font-weight:500">${order?.firstName} ${order?.lastName}</span></h4>
-          <h4 style="margin:0">Address : <span style="font-weight:500">${order?.address}</span></h4>
-          <h4 style="margin:0">Email : <span style="font-weight:500">${order?.email}</span></h4>
-          <h4 style="margin:0">Phone : <span style="font-weight:500">${order?.phone}</span></h4>
-          <h4 style="margin:0">Pincode : <span style="font-weight:500">${order?.pincode}</span></h4>
-          <h4 style="margin:0">City : <span style="font-weight:500">${order?.city}</span></h4>
-          <h4 style="margin:0">State : <span style="font-weight:500">${order?.state}</span></h4>
+          <h4 style="margin:0">Name : <span style="font-weight:500">${
+            order?.firstName
+          } ${order?.lastName}</span></h4>
+          <h4 style="margin:0">Address : <span style="font-weight:500">${
+            order?.address
+          }</span></h4>
+          <h4 style="margin:0">Email : <span style="font-weight:500">${
+            order?.email
+          }</span></h4>
+          <h4 style="margin:0">Phone : <span style="font-weight:500">${
+            order?.phone
+          }</span></h4>
+          <h4 style="margin:0">Pincode : <span style="font-weight:500">${
+            order?.pincode
+          }</span></h4>
+          <h4 style="margin:0">City : <span style="font-weight:500">${
+            order?.city
+          }</span></h4>
+          <h4 style="margin:0">State : <span style="font-weight:500">${
+            order?.state
+          }</span></h4>
         `,
     };
     const mailOptions2 = {
-        from: process.env.EMAIL,
-        to: process.env.EMAIL,
-        subject: "New Order",
-        html: `
+      from: process.env.EMAIL,
+      to: process.env.EMAIL,
+      subject: "New Order",
+      html: `
             <h1>You got new order from ${order?.email}</h1>
 
             <p>Your order has been received and is being processed. Below are the details:</p>
@@ -112,15 +126,29 @@ export const sendOrderMail = async (req, res) => {
             )}</p>
   
             <h2>Shipping Address</h2>
-            <h4 style="margin:0">Name : <span style="font-weight:500">${order?.firstName} ${order?.lastName}</span></h4>
-            <h4 style="margin:0">Address : <span style="font-weight:500">${order?.address}</span></h4>
-            <h4 style="margin:0">Email : <span style="font-weight:500">${order?.email}</span></h4>
-            <h4 style="margin:0">Phone : <span style="font-weight:500">${order?.phone}</span></h4>
-            <h4 style="margin:0">Pincode : <span style="font-weight:500">${order?.pincode}</span></h4>
-            <h4 style="margin:0">City : <span style="font-weight:500">${order?.city}</span></h4>
-            <h4 style="margin:0">State : <span style="font-weight:500">${order?.state}</span></h4>
+            <h4 style="margin:0">Name : <span style="font-weight:500">${
+              order?.firstName
+            } ${order?.lastName}</span></h4>
+            <h4 style="margin:0">Address : <span style="font-weight:500">${
+              order?.address
+            }</span></h4>
+            <h4 style="margin:0">Email : <span style="font-weight:500">${
+              order?.email
+            }</span></h4>
+            <h4 style="margin:0">Phone : <span style="font-weight:500">${
+              order?.phone
+            }</span></h4>
+            <h4 style="margin:0">Pincode : <span style="font-weight:500">${
+              order?.pincode
+            }</span></h4>
+            <h4 style="margin:0">City : <span style="font-weight:500">${
+              order?.city
+            }</span></h4>
+            <h4 style="margin:0">State : <span style="font-weight:500">${
+              order?.state
+            }</span></h4>
           `,
-      };
+    };
 
     const info = await transporter.sendMail(mailOptions);
     const info2 = await transporter.sendMail(mailOptions2);

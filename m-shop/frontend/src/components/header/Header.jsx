@@ -11,7 +11,7 @@ import cart from "../../images/cart.svg";
 import { fetchProduct } from "../../features/cartSlice";
 import PageTransition from "../pageTransition/PageTransition";
 import { getWishlistItem } from "../../features/wishlistSlice";
-import logo from "../../images/logo.svg";
+import logo from "../../images/logo.png";
 
 const Header = () => {
   const [toggleProfile, setToggleProfile] = useState(false);

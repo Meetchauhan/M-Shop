@@ -1,6 +1,6 @@
 import Input from "../formComponent/inputField/Input";
 import "./footer.scss";
-import logo from "../../images/logo.svg";
+import logo from "../../images/logo.png";
 import ContactBtn from "../buttons/contactBtn/ContactBtn";
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";

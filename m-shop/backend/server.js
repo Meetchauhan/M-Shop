@@ -14,6 +14,7 @@ import paymentRouter from "./routes/payment.route.js";
 import ordersRouter from "./routes/order.route.js";
 import enqueryMailRouter from "./routes/enqueryMail.route.js";
 import orderMailRouter from "./routes/orderMail.route.js";
+import registrationMailRouter from "./routes/registrationMail.route.js";
 import { fileURLToPath } from "url";
 import path from "path";
 
@@ -28,12 +29,17 @@ const PORT = process.env.PORT || 8000;
 // Set up CORS middleware
 app.use(
   cors({
-    origin: ["https://m-shop-gq4d.vercel.app", "https://guileless-centaur-857f5a.netlify.app", "https://m-shop-2.onrender.com", "http://localhost:5000"],
+    origin: [
+      "https://m-shop-gq4d.vercel.app",
+      "https://guileless-centaur-857f5a.netlify.app",
+      "https://m-shop-2.onrender.com",
+      "http://localhost:5000",
+    ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
   })
-  );
+);
 
 // Set up Multer for file uploads
 const storage = multer.diskStorage({
@@ -65,6 +71,7 @@ app.use("/api", paymentRouter);
 app.use("/api", ordersRouter);
 app.use("/api", enqueryMailRouter);
 app.use("/api", orderMailRouter);
+app.use("/api", registrationMailRouter);
 
 // app.get("/", (req, res) => {
 //   res.send("Server is Ready ---");
@@ -75,13 +82,12 @@ app.use(express.static(path.join(__dirname, "../frontend/dist"))); // Adjust pat
 // Fallback route for React
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../frontend/dist/index.html")); // Adjust path
-   connectDB();
-});
-app.get('/', (req, res) => {
-   res.send("Server is Ready---");
   connectDB();
 });
-
+app.get("/", (req, res) => {
+  res.send("Server is Ready---");
+  connectDB();
+});
 
 // Start the server
 app.listen(PORT, () => {

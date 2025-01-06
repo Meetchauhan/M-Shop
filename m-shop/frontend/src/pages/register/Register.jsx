@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import FormSubmitStatus from "../../components/formSubmitStatus/FormSubmitStatus";
 import PageTransition from "../../components/pageTransition/PageTransition";
 import { useState } from "react";
+import { registrationMail } from "../../features/registrationMailSlice";
 
 const Register = () => {
   const [formStatus, setFormStatus] = useState(false);
@@ -31,6 +32,7 @@ const Register = () => {
       const result = await dispatch(registerUser(value)).unwrap();
       if (result.status) {
         navigate("/login", { replace: true });
+        dispatch(registrationMail(value));
       }
       if (result.status === false) {
         setFormStatus(true);
