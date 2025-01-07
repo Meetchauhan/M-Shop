@@ -53,7 +53,7 @@ export const sendOrderMail = async (req, res) => {
           </table>
       
           <h3>Order Summary</h3>
-          <p><strong>Total Quantity:</strong> ${order?.totalAmount?.toLocaleString(
+          <p><strong>Total Amount:</strong> ${order?.totalAmount?.toLocaleString(
             "en-IN"
           )}</p>
 
@@ -121,7 +121,7 @@ export const sendOrderMail = async (req, res) => {
             </table>
         
             <h3>Order Summary</h3>
-            <p><strong>Total Quantity:</strong> ${order?.totalAmount?.toLocaleString(
+            <p><strong>Total Amount:</strong> ${order?.totalAmount?.toLocaleString(
               "en-IN"
             )}</p>
   
