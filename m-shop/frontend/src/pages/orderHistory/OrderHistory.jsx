@@ -3,6 +3,7 @@ import "./orderHistory.scss";
 import { useEffect } from "react";
 import { allOrders } from "../../features/ordersSlice";
 import AllOrders from "../../components/allOrders/AllOrders";
+import { Link } from "react-router-dom";
 
 const OrderHistory = () => {
   const dispatch = useDispatch();
@@ -19,6 +20,11 @@ const OrderHistory = () => {
         {orders?.map((item) => (
           <AllOrders orders={item} key={item._id} />
         ))}
+        {orders?.length < 1 && (
+          <p>
+            You didn't have any order click <Link to="/">here</Link> to order.
+          </p>
+        )}
       </div>
     </div>
   );
