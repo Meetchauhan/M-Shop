@@ -53,7 +53,7 @@ const Cart = () => {
             )}
             <div className="proccess_to_checkout">
               <PageTransition to="/checkout">
-                Proccee to Checkout
+                Proceed to Checkout
               </PageTransition>
             </div>
           </div>
