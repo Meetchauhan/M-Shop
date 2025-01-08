@@ -27,5 +27,20 @@
   .productList_wrapper {
     display: flex;
     flex-wrap: wrap;
+    @media(max-width:575px){
+      flex-direction: column;
+    }
+    span{
+      width: 20%;
+      @media(max-width:575px){
+        width: 100%;
+      }
+      span{
+        width: 95% !important;
+        @media(max-width:575px){
+          width: 100% !important;
+        }
+      }
+    }
   }
 }

@@ -1,18 +1,18 @@
-.productItem {
-  width: 20%;
+.similar_productItem {
+  width: auto;
   margin: 0 0 40px;
   transition: transform 0.3s ease;
   transform: scale(1);
 
-  @media (max-width: 1199px) {
-    width: 33.33%;
-  }
-  @media (max-width: 767px) {
-    width: 50%;
-  }
-  @media (max-width: 575px) {
-    width: 100%;
-  }
+  // @media (max-width: 1199px) {
+  //   width: 33.33%;
+  // }
+  // @media (max-width: 767px) {
+  //   width: 50%;
+  // }
+  // @media (max-width: 575px) {
+  //   width: 100%;
+  // }
 
   .productItem_wrapper {
     position: relative;

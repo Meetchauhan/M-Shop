@@ -1,6 +1,9 @@
-h2{
+h2.heading_component{
     font-size: 35px;
     text-align: center;
     margin: 0 0 30px;
     font-weight: 500;
+    @media(max-width:575px){
+        font-size: 25px;
+    }
 }
