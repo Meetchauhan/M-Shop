@@ -10,7 +10,7 @@ const UpdateProfileModel = () => {
     const dispatch = useDispatch()
   return (
     <div className="form login register admin_product_form">
-      <div className="container">
+      {/* <div className="container"> */}
         <div className="form_wrapper">
         <div
             className="closeModel"
@@ -21,7 +21,7 @@ const UpdateProfileModel = () => {
           <FormHeading heading={"Update Profile"} />
           <EditUser />
         </div>
-      </div>
+      {/* </div> */}
     </div>
   );
 };
