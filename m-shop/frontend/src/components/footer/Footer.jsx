@@ -168,7 +168,7 @@ const Footer = () => {
             </div>
           </div>
           <div className="second">
-            <div className="left">© 2024 M-Shop. All rights reserved.</div>
+            <div className="left">© 2025 M-Shop. All rights reserved.</div>
             <div className="right"></div>
           </div>
         </div>
