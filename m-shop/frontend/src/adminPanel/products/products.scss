@@ -1,7 +1,11 @@
 .products {
+  position: relative;
   @media (max-width: 767px) {
     overflow-x: scroll;
   }
+  .products_inner{
+    height: 85dvh;
+    overflow-y: scroll;
   ul {
     display: flex;
     flex-direction: column;
@@ -39,6 +43,7 @@
       }
     }
   }
+}
 }
 table {
   width: 100%;

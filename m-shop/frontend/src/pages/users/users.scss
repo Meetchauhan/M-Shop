@@ -1,4 +1,6 @@
 .users {
+  height: 90dvh;
+  overflow-y: scroll  ;
   @media(max-width:767px){
     overflow-x: scroll;
   }
@@ -15,6 +17,9 @@
             }
           }
           td {
+            &.user_email{
+              width: 32%;
+            }
           }
           &:first-child td {
             font-weight: 700;

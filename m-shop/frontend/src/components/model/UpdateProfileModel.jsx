@@ -1,4 +1,3 @@
-
 import { useDispatch } from "react-redux";
 import FormHeading from "../../components/formComponent/formHeading/FormHeading";
 
@@ -7,20 +6,29 @@ import EditUser from "../editUser/EditUser";
 import { closeUserEditModel } from "../../features/productModelSlice";
 
 const UpdateProfileModel = () => {
-    const dispatch = useDispatch()
+  const dispatch = useDispatch();
   return (
     <div className="form login register admin_product_form">
       {/* <div className="container"> */}
-        <div className="form_wrapper">
+      <div className="form_wrapper">
         <div
-            className="closeModel"
-            onClick={() => dispatch(closeUserEditModel())}
+          className="closeModel"
+          onClick={() => dispatch(closeUserEditModel())}
+        >
+          <svg
+            clipRule="evenodd"
+            fillRule="evenodd"
+            strokeLinejoin="round"
+            strokeMiterlimit="2"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            Close
-          </div>
-          <FormHeading heading={"Update Profile"} />
-          <EditUser />
+            <path d="m12 10.93 5.719-5.72c.146-.146.339-.219.531-.219.404 0 .75.324.75.749 0 .193-.073.385-.219.532l-5.72 5.719 5.719 5.719c.147.147.22.339.22.531 0 .427-.349.75-.75.75-.192 0-.385-.073-.531-.219l-5.719-5.719-5.719 5.719c-.146.146-.339.219-.531.219-.401 0-.75-.323-.75-.75 0-.192.073-.384.22-.531l5.719-5.719-5.72-5.719c-.146-.147-.219-.339-.219-.532 0-.425.346-.749.75-.749.192 0 .385.073.531.219z" />
+          </svg>
         </div>
+        <FormHeading heading={"Update Profile"} />
+        <EditUser />
+      </div>
       {/* </div> */}
     </div>
   );

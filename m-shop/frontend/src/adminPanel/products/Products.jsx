@@ -115,9 +115,9 @@ function Products() {
               ))}
             </tbody>
           </table>
-          <AddProductBtn />
         </div>
       </div>
+      <AddProductBtn />
       {handleUpdateProductModel && (
         <UpdateProductModel
           product={productToUpdate}

@@ -60,7 +60,7 @@ const Users = () => {
                   <td>
                     {item?.firstName} {item?.lastName}
                   </td>
-                  <td>{item?.email}</td>
+                  <td className="user_email">{item?.email}</td>
                   <td>{item?.password}</td>
                   <td
                     onClick={() => handleDelete(item._id)}

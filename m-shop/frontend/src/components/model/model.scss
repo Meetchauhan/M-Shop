@@ -1,5 +1,5 @@
 .form.login.register.admin_product_form{
-  height: 100vh;
+  height: 100%;
 }
 .admin_product_form {
     position: absolute !important;
@@ -15,6 +15,13 @@
       padding: 40px;
       @media (max-width: 767px) {
         width: 100%;
+      }
+      .closeModel{
+        cursor: pointer;
+        svg{
+          width: 40px;
+          height: 30px;
+        }
       }
     }
   }

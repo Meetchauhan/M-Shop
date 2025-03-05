@@ -1,7 +1,10 @@
 .admin_product_form {
   position: absolute !important;
-  top: 0;
+  top: 50%;
   background-color: rgba(65, 62, 62, 0.212);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
   .form_wrapper {
     position: fixed;
     top: 50%;
