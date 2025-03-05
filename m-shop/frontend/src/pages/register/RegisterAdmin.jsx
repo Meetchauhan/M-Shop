@@ -6,6 +6,7 @@ import FormHeading from "../../components/formComponent/formHeading/FormHeading"
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { registerAdmin } from "../../features/adminSlice";
+import { useEffect } from "react";
 
 const RegisterAdmin = () => {
 
@@ -29,6 +30,9 @@ const RegisterAdmin = () => {
       action.resetForm();
     },
   });
+  useEffect(() => {
+    document.title = "Register";
+  }, []);
   return (
     <div className="form login register">
       <div className="container">

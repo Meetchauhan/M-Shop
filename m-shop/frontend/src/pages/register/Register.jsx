@@ -8,7 +8,7 @@ import { registerUser } from "../../features/authSlice";
 import { useNavigate } from "react-router-dom";
 import FormSubmitStatus from "../../components/formSubmitStatus/FormSubmitStatus";
 import PageTransition from "../../components/pageTransition/PageTransition";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { registrationMail } from "../../features/registrationMailSlice";
 
 const Register = () => {
@@ -43,6 +43,9 @@ const Register = () => {
       action.resetForm();
     },
   });
+  useEffect(() => {
+    document.title = "Register";
+  }, []);
   return (
     <div className="form login register">
       <div className="container">

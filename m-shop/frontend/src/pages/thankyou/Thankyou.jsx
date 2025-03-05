@@ -21,6 +21,10 @@ const Thankyou = () => {
     }
     dispatch(orderMail(recentOrders?.order));
   }, [dispatch, recentOrders, navigate]);
+
+  useEffect(() => {
+    document.title = "Thank You";
+  }, []);
   return (
     <div className="thankyou">
       <div className="container">

@@ -13,6 +13,10 @@ const OrderHistory = () => {
   useEffect(() => {
     dispatch(allOrders());
   }, [dispatch]);
+
+  useEffect(() => {
+    document.title = "Order History";
+  }, []);
   return (
     <div className="orderStatus">
       <div className="container">
@@ -22,7 +26,7 @@ const OrderHistory = () => {
         ))}
         {orders?.length < 1 && (
           <p>
-            You didn't have any order click <Link to="/">here</Link> to order.
+            {"You didn't have any order click"} <Link to="/">here</Link> {"to order."}
           </p>
         )}
       </div>

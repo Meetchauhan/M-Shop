@@ -22,6 +22,10 @@ const Cart = () => {
     dispatch(totalAmount());
   }, [dispatch]);
 
+  useEffect(() => {
+    document.title = "Cart";
+  }, []);
+
   return (
     <div className="cart">
       <div className="container">

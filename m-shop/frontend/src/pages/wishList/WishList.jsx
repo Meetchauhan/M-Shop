@@ -4,12 +4,15 @@ import { Link } from "react-router-dom";
 import PageTransition from "../../components/pageTransition/PageTransition";
 import emptyWishlist from "../../images/empty_wishlist.jpg";
 import "./wishlist.scss"
+import { useEffect } from "react";
 
 const WishList = () => {
   const wishListProducts = useSelector(
     (state) => state?.wishlist?.wishlist?.data
   );
-  console.log("wishlist product", wishListProducts);
+  useEffect(() => {
+    document.title = "Wishlist";
+  }, []);
 
   return (
     <div className="productList">

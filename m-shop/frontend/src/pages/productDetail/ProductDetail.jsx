@@ -37,6 +37,10 @@ const ProductDetail = () => {
     dispatch(allProducts());
   }, [dispatch]);
 
+  useEffect(() => {
+    document.title = "Product";
+  }, []);
+
   const thisProduct = getAllProducts?.find((prod) => prod?.name === name);
 
   if (!thisProduct) {

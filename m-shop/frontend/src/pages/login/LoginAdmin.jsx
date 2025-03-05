@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 // import { getProfile, loginUser } from "../../features/authSlice";
 import { useNavigate } from "react-router-dom";
 import { getAdminProfile, loginAdmin } from "../../features/adminSlice";
+import { useEffect } from "react";
 
 const LoginAdmin = () => {
   const navigate = useNavigate();
@@ -18,6 +19,10 @@ const LoginAdmin = () => {
     password: "",
   };
   console.log("loginData2", loginData);
+
+  useEffect(() => {
+    document.title = "Login";
+  }, []);
 
   const { handleChange, handleSubmit, touched, errors, values } = useFormik({
     initialValues: initialValue,

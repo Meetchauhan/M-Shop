@@ -40,8 +40,9 @@ const Users = () => {
     dispatch(deleteUser(id)).then(() => dispatch(getAllUser()));
   };
 
-  console.log("updated user", userToUpdate);
-
+  useEffect(() => {
+    document.title = "Users";
+  }, []);
   return (
     <div className="users">
       <div className="container">

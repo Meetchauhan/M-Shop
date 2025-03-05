@@ -5,6 +5,7 @@ import { openUserEditModel } from "../../features/productModelSlice";
 import UpdateProfileModel from "../../components/model/UpdateProfileModel";
 import EditUserBtn from "../../components/buttons/editUserBtn/EditUserBtn";
 import Heading from "../../components/heading/Heading";
+import { useEffect } from "react";
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -12,8 +13,10 @@ const Profile = () => {
   const handleModel = useSelector(
     (state) => state?.handleProductModel.editUser
   );
-  console.log("handle profile", profile);
-
+  useEffect(() => {
+    document.title = "Profile";
+  }, []);
+  
   return (
     <div className="profile">
       <div className="container">

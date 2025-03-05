@@ -34,7 +34,10 @@ const OrdersPage = () => {
       action.resetForm();
     },
   });
-  console.log("status id", handleStatus);
+
+  useEffect(() => {
+    document.title = "Orders";
+  }, []);
 
   return (
     <div className="ordersPage">

@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import FormSubmitStatus from "../../components/formSubmitStatus/FormSubmitStatus";
 import { fetchProduct } from "../../features/cartSlice";
 import PageTransition from "../../components/pageTransition/PageTransition";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Login = () => {
   const [formStatus, setFormStatus] = useState(false);
@@ -46,6 +46,9 @@ const Login = () => {
       action.resetForm();
     },
   });
+  useEffect(() => {
+    document.title = "Login";
+  }, []);
   return (
     <>
       <div className="form login register">
