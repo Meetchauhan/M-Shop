@@ -16,6 +16,7 @@ const Cart = () => {
     total?.cart?.total?.totalAmount?.toLocaleString("en-IN")
   );
   console.log("total", cartProducts);
+  const cartTotalLoading = useSelector((item) => item?.cart?.loading);
 
   useEffect(() => {
     dispatch(totalAmount());
@@ -42,14 +43,16 @@ const Cart = () => {
         )}
         {cartProducts?.length > 0 && (
           <div className="checkout_box">
-            {total ? (
+            {!cartTotalLoading ? (
               <div className="totalAmount">
                 Total Amount : <img src={currency} alt="currency" /> {total}
               </div>
             ) : (
-              <SkeletonTheme baseColor="#e0e0e0" highlightColor="#f5f5f5">
-                <Skeleton width={"30px"} height={"20px"} duration={0.8} />
-              </SkeletonTheme>
+              <div className="totalAmountLoader">
+                <SkeletonTheme baseColor="#e0e0e0" highlightColor="#4d4e51fa">
+                  <Skeleton width={200} height={50} duration={0.8} />
+                </SkeletonTheme>
+              </div>
             )}
             <div className="proccess_to_checkout">
               <PageTransition to="/checkout">
