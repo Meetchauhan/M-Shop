@@ -12,15 +12,17 @@ import { fetchProduct } from "../../features/cartSlice";
 import PageTransition from "../pageTransition/PageTransition";
 import { getWishlistItem } from "../../features/wishlistSlice";
 import logo from "../../images/logo.png";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 const Header = () => {
   const [toggleProfile, setToggleProfile] = useState(false);
   const dispatch = useDispatch();
   const profile = useUserProfile();
   const login = useLogin();
-  console.log("login", login);
 
-  console.log("profile", profile);
+  const cartLoading = useSelector((item) => item?.cart?.loading);
+  const wishlistLoading = useSelector((item) => item?.wishlist?.loading);
+
   const profileName = profile?.firstName
     ? profile?.firstName
     : profile?.data?.firstName;
@@ -43,7 +45,6 @@ const Header = () => {
     setToggleProfile(!toggleProfile);
   };
   const cartProducts = useSelector((cart) => cart?.cart?.cart?.data);
-  console.log("Cart products", cartProducts);
 
   const wishListProducts = useSelector(
     (state) => state?.wishlist?.wishlist?.data
@@ -61,61 +62,85 @@ const Header = () => {
           {profile && (
             <ul className="nav_links">
               <li className="mobile">
-                <PageTransition
-                  to={"/cart"}
-                  profile={() => setToggleProfile(false)}
-                >
-                  <img src={cart} alt="cart" />
-                  {cartProducts?.length > 0 && (
-                    <sup>
-                      <span>
-                        {cartProducts?.length > 0 && cartProducts?.length}
-                      </span>
-                    </sup>
-                  )}
-                </PageTransition>
+                {cartLoading ? (
+                  <SkeletonTheme baseColor="#e0e0e0" highlightColor="#303954">
+                    <Skeleton width={20} height={20} duration={0.8} />
+                  </SkeletonTheme>
+                ) : (
+                  <PageTransition
+                    to={"/cart"}
+                    profile={() => setToggleProfile(false)}
+                  >
+                    <img src={cart} alt="cart" />
+                    {cartProducts?.length > 0 && (
+                      <sup>
+                        <span>
+                          {cartProducts?.length > 0 && cartProducts?.length}
+                        </span>
+                      </sup>
+                    )}
+                  </PageTransition>
+                )}
               </li>
               <li className="desktop">
-                <PageTransition
-                  to={"/cart"}
-                  profile={() => setToggleProfile(false)}
-                >
-                  Cart
-                  {cartProducts?.length > 0 && (
-                    <sup>
-                      <span>{cartProducts?.length}</span>
-                    </sup>
-                  )}
-                </PageTransition>
+                {cartLoading ? (
+                  <SkeletonTheme baseColor="#e0e0e0" highlightColor="#303954">
+                    <Skeleton width={40} height={20} duration={0.8} />
+                  </SkeletonTheme>
+                ) : (
+                  <PageTransition
+                    to={"/cart"}
+                    profile={() => setToggleProfile(false)}
+                  >
+                    Cart
+                    {cartProducts?.length > 0 && (
+                      <sup>
+                        <span>{cartProducts?.length}</span>
+                      </sup>
+                    )}
+                  </PageTransition>
+                )}
               </li>
               <li className="mobile">
-                <PageTransition
-                  profile={() => setToggleProfile(false)}
-                  to="/wishlist"
-                >
-                  <img src={wishlist} alt="wishlist" />
-                  {wishListProducts?.length > 0 && (
-                    <sup>
-                      <span>{wishListProducts?.length}</span>
-                    </sup>
-                  )}
-                </PageTransition>
+                {wishlistLoading ? (
+                  <SkeletonTheme baseColor="#e0e0e0" highlightColor="#303954">
+                    <Skeleton width={20} height={20} duration={0.8} />
+                  </SkeletonTheme>
+                ) : (
+                  <PageTransition
+                    profile={() => setToggleProfile(false)}
+                    to="/wishlist"
+                  >
+                    <img src={wishlist} alt="wishlist" />
+                    {wishListProducts?.length > 0 && (
+                      <sup>
+                        <span>{wishListProducts?.length}</span>
+                      </sup>
+                    )}
+                  </PageTransition>
+                )}
               </li>
               <li className="desktop">
-                <PageTransition
-                  profile={() => setToggleProfile(false)}
-                  to="/wishlist"
-                >
-                  Wishlist
-                  {wishListProducts?.length > 0 && (
-                    <sup>
-                      <span>
-                        {wishListProducts?.length > 0 &&
-                          wishListProducts?.length}
-                      </span>
-                    </sup>
-                  )}
-                </PageTransition>
+                {wishlistLoading ? (
+                  <SkeletonTheme baseColor="#e0e0e0" highlightColor="#303954">
+                    <Skeleton width={60} height={20} duration={0.8} />
+                  </SkeletonTheme>
+                ) : (
+                  <PageTransition
+                    profile={() => setToggleProfile(false)}
+                    to="/wishlist"
+                  >
+                    Wishlist
+                    {wishListProducts?.length > 0 && (
+                      <sup>
+                        <span>
+                          {wishListProducts?.length > 0 &&
+                            wishListProducts?.length}
+                        </span>
+                      </sup>
+                    )}
+                  </PageTransition>
+                )}
               </li>
               <li className="desktop">
                 <PageTransition

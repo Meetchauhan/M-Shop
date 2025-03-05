@@ -29,6 +29,7 @@ const ProductItem = ({
   const dispatch = useDispatch();
   const location = useLocation();
   const wishlistItem = useSelector((state) => state?.wishlist?.wishlist);
+  
 
   const handleCart = () => {
     dispatch(
@@ -100,7 +101,7 @@ const ProductItem = ({
           {quantity > 0 ? (
             <div className="btns">
               {location.pathname !== "/cart" && (
-                <AddToCartBtn title={"Add to Cart"} onClick={handleCart} />
+                <AddToCartBtn  title={"Add to Cart"} onClick={handleCart} />
               )}
               <div className="wishlistBtn" onClick={handleWishList}>
                 {wishlistItem?.data?.some(
