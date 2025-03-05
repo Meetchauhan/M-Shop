@@ -54,11 +54,19 @@ const Cart = () => {
                 </SkeletonTheme>
               </div>
             )}
-            <div className="proccess_to_checkout">
-              <PageTransition to="/checkout">
-                Proceed to Checkout
-              </PageTransition>
-            </div>
+            {!cartTotalLoading ? (
+              <div className="proccess_to_checkout">
+                <PageTransition to="/checkout">
+                  Proceed to Checkout
+                </PageTransition>
+              </div>
+            ) : (
+              <div className="proccess_to_checkout">
+                <SkeletonTheme baseColor="#e0e0e0" highlightColor="#4d4e51fa">
+                  <Skeleton width={200} height={50} duration={0.8} />
+                </SkeletonTheme>
+              </div>
+            )}
           </div>
         )}
         {(cartProducts?.length < 1 || cartProducts === undefined) && (
